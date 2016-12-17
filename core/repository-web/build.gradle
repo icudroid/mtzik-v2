@@ -1,0 +1,9 @@
+apply plugin: 'spring-boot'
+
+dependencies {
+  compile project(':core:domain-web')
+  compile project(':core:repository')
+}
+
+startScripts.enabled = false
+bootRepackage.enabled = false

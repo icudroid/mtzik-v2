@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout/logged/logged">
+<head>
+
+</head>
+<th:block layout:fragment="css-add">
+
+
+</th:block>
+<body th:with="activeMenu=${'dashboard'}">
+<div layout:fragment="content">
+
+    <div class="page-head">
+        <!-- BEGIN PAGE TITLE -->
+        <div class="page-title">
+            <h1>Dashboard <small>dashboard &and; statistics</small></h1>
+        </div>
+    </div>
+    <div class="dashboard-stat2">
+
+
+    </div>
+</div>
+</body>
+
+<th:block layout:fragment="js-add">
+
+
+</th:block>
+
+
+<th:block layout:fragment="js-init">
+    <script th:inline="javascript">
+        $(function() {
+            Metronic.init(); // init metronic core components
+            Layout.init(); // init current layout
+
+        });
+    </script>
+</th:block>
+
+</html>

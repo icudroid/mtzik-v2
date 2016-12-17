@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CORAL Template (v1.9.6)</title>
+	
+	<!-- Meta -->
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+
+	 
+	
+	<!-- 
+	**********************************************************
+	In development, use the LESS files and the less.js compiler
+	instead of the minified CSS loaded by default.
+	**********************************************************
+	-->
+
+		<!-- <link rel="stylesheet/less" href="../assets/less/docs/module.docs.page.index.component.realestate.navbar.sidebar_type.fusion.less" /> -->
+
+	<link rel="stylesheet" href="../assets/css/docs/module.docs.page.index.component.realestate.navbar.sidebar_type.fusion.min.css" />
+
+	
+	
+	<script src="../assets/components/library/jquery/jquery.min.js?v=v1.9.6&sv=v0.0.1"></script>
+<script src="../assets/components/library/jquery/jquery-migrate.min.js?v=v1.9.6&sv=v0.0.1"></script>
+<script src="../assets/components/library/modernizr/modernizr.js?v=v1.9.6&sv=v0.0.1"></script>
+<script src="../assets/components/plugins/less-js/less.min.js?v=v1.9.6&sv=v0.0.1"></script>
+<script src="../assets/components/modules/admin/charts/flot/assets/lib/excanvas.js?v=v1.9.6&sv=v0.0.1"></script>
+<script src="../assets/components/plugins/browser/ie/ie.prototype.polyfill.js?v=v1.9.6&sv=v0.0.1"></script>
+<script src="../assets/components/library/angular/angular.min.js?v=v1.9.6&sv=v0.0.1"></script>
+</head>
+<body id="docs">
+<!-- Fixed navbar -->
+<div class="navbar navbar-default margin-none">
+  <!-- <div class="container"> -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">CORAL Documentation</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Core packages <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="component.core.minimal.html">Minimal</a></li>
+            <li><a href="component.core.html">Complete</a></li>
+          </ul>
+        </li>
+        <li><a href="http://www.mosaicpro.biz/blog/tutorials" target="_blank"><i class="fa fa-fw fa-file-text-o"></i> Online Guides</a></li>
+      </ul>
+      <!-- <ul class="nav navbar-nav navbar-right">
+        <li><a href="../navbar/">Default</a></li>
+        <li><a href="../navbar-static-top/">Static top</a></li>
+        <li class="active"><a href="./">Fixed top</a></li>
+      </ul> -->
+    </div><!--/.nav-collapse -->
+  <!-- </div> -->
+</div>
+
+<div class="innerAll">
+<div class="widget widget-tabs">
+	<div class="widget-body">
+
+		<div class="row">
+			<div class="col-md-3" ng-app="App" ng-controller="ComponentsCtrl" ng-init="search = 'realestate.navbar'">
+				<input class="form-control" type="text" ng-model="search" placeholder="Search .." />
+				<tree collection="components" search="search"></tree>
+			</div>
+			<div class="col-md-9">
+										
+						<div class="jumbotron center">
+							<h1>component.realestate.navbar</h1>
+						</div>
+
+													<h4 class="separator bottom"><a href="#view-7f94c30d9bd92fce21f46b4fecb6b504" data-toggle="collapse">realestate.navbar</a></h4>
+							<div class="collapse in" id="view-7f94c30d9bd92fce21f46b4fecb6b504">
+								<div class="widget widget-tabs">
+									<div class="widget-head padding-none">
+										<ul>
+											<li class="active"><a href="#preview-7f94c30d9bd92fce21f46b4fecb6b504" data-toggle="tab">Preview</a></li>
+											<li><a href="#source-7f94c30d9bd92fce21f46b4fecb6b504" data-toggle="tab">Source</a></li>
+											<li><a href="#styles-7f94c30d9bd92fce21f46b4fecb6b504" data-toggle="tab">Styles</a></li>																					</ul>
+										<a href="../docs/examples/realestate.navbar.html" target="_blank" class="pull-right btn btn-success">Live Example</a>
+									</div>
+									<div class="widget-body">
+										<div class="tab-content">
+											<div class="tab-pane active" id="preview-7f94c30d9bd92fce21f46b4fecb6b504">
+												<!-- Nav Bar -->   
+<div class="navbar navbar-coral navbar-fixed-top">
+    <!-- Nav Bar Header -->       
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle " data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar "></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html?lang=en">Coral</a>
+        </div>
+        <!-- Nav Bar Collapse -->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav main-menu">
+                <li class="active"><a href="index.html?lang=en" >Home</a></li>
+                <li><a href="map.html?lang=en">Map &nbsp;<span class="label label-primary">New</span></a></li>
+                <li><a href="listing.html?lang=en">Properties</a></li>
+                <li><a href="agent.html?lang=en">Agent page</a></li>
+            </ul>
+        </div> 
+        <!-- NavBar Collapse -->
+        <!-- Nav Bar Right -->          
+        <ul class="nav navbar-nav navbar-right right-side">
+            <!-- User LogIn Button -->
+            <li> 
+                <div class="btn-group">
+                    <a href="#login-menu" class="btn btn-login" data-toggle="collapse"> Login</a>
+                    <div class="collapse login" id="login-menu">
+                        <form action="">
+                            <div>
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="Email">
+                                    <span class="input-group-addon"><i class="fa fa-check"></i></span>
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <input type="password" class="form-control" placeholder="Password">
+                                    <span class="input-group-addon"><i class="fa fa-times"></i></span>
+                                </div>
+                            </div>
+                            <div class="pull-right">
+                                <i class="fa fa-refresh fa-spin"></i> <button type="button" class="btn btn-login">Login</button>
+                            </div>
+                            <div class="center">                          
+                                <a href="" class="recover-password">Recover Password <i class="fa fa-lock"></i></a>
+                            </div>
+                        </form>
+                    </div>
+                    <a href="" class="btn btn-signup glyphicons user_add"><i></i>Sign up</a>
+                </div>
+            </li>
+         
+        </ul>
+    </div>
+</div>
+
+											</div>
+											<div class="tab-pane" id="source-7f94c30d9bd92fce21f46b4fecb6b504">
+												<pre class="prettyprint">&lt;!-- Nav Bar --&gt;   
+&lt;div class=&quot;navbar navbar-coral navbar-fixed-top&quot;&gt;
+    &lt;!-- Nav Bar Header --&gt;       
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;navbar-header&quot;&gt;
+            &lt;button type=&quot;button&quot; class=&quot;navbar-toggle &quot; data-toggle=&quot;collapse&quot; data-target=&quot;.navbar-collapse&quot;&gt;
+                &lt;span class=&quot;icon-bar &quot;&gt;&lt;/span&gt;
+                &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+                &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+            &lt;/button&gt;
+            &lt;a class=&quot;navbar-brand&quot; href=&quot;index.html?lang=en&quot;&gt;Coral&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;!-- Nav Bar Collapse --&gt;
+        &lt;div class=&quot;collapse navbar-collapse&quot;&gt;
+            &lt;ul class=&quot;nav navbar-nav main-menu&quot;&gt;
+                &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;index.html?lang=en&quot; &gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;map.html?lang=en&quot;&gt;Map &amp;nbsp;&lt;span class=&quot;label label-primary&quot;&gt;New&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;listing.html?lang=en&quot;&gt;Properties&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;agent.html?lang=en&quot;&gt;Agent page&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt; 
+        &lt;!-- NavBar Collapse --&gt;
+        &lt;!-- Nav Bar Right --&gt;          
+        &lt;ul class=&quot;nav navbar-nav navbar-right right-side&quot;&gt;
+            &lt;!-- User LogIn Button --&gt;
+            &lt;li&gt; 
+                &lt;div class=&quot;btn-group&quot;&gt;
+                    &lt;a href=&quot;#login-menu&quot; class=&quot;btn btn-login&quot; data-toggle=&quot;collapse&quot;&gt; Login&lt;/a&gt;
+                    &lt;div class=&quot;collapse login&quot; id=&quot;login-menu&quot;&gt;
+                        &lt;form action=&quot;&quot;&gt;
+                            &lt;div&gt;
+                                &lt;div class=&quot;input-group input-group-sm&quot;&gt;
+                                    &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;Email&quot;&gt;
+                                    &lt;span class=&quot;input-group-addon&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;input-group input-group-sm&quot;&gt;
+                                    &lt;input type=&quot;password&quot; class=&quot;form-control&quot; placeholder=&quot;Password&quot;&gt;
+                                    &lt;span class=&quot;input-group-addon&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&quot;pull-right&quot;&gt;
+                                &lt;i class=&quot;fa fa-refresh fa-spin&quot;&gt;&lt;/i&gt; &lt;button type=&quot;button&quot; class=&quot;btn btn-login&quot;&gt;Login&lt;/button&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&quot;center&quot;&gt;                          
+                                &lt;a href=&quot;&quot; class=&quot;recover-password&quot;&gt;Recover Password &lt;i class=&quot;fa fa-lock&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                            &lt;/div&gt;
+                        &lt;/form&gt;
+                    &lt;/div&gt;
+                    &lt;a href=&quot;&quot; class=&quot;btn btn-signup glyphicons user_add&quot;&gt;&lt;i&gt;&lt;/i&gt;Sign up&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+         
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+</pre>
+											</div>
+
+																						<div class="tab-pane" id="styles-7f94c30d9bd92fce21f46b4fecb6b504">
+
+												<h4>Code</h4>
+												<pre class="prettyprint">@import &quot;assets/components/modules/realestate/navbar/realestate.navbar.less&quot;;</pre>
+												<hr class="separator"/>
+
+												<h4>Usage</h4>
+												<ol>
+													<li>Create a new LESS file <em>(eg. styles.less)</em></li>
+													<li>Copy &amp; paste the above imports in the LESS file.</li>
+													<li>Place the file in your project's document root.</li>
+													<li>
+														Load the LESS file into the <code>&lt;head&gt;</code> section of your HTML document, before any JavaScript files: <p><pre class="prettyprint">&lt;link type=&quot;stylesheet/less&quot; href=&quot;styles.less&quot; /&gt;</pre>
+</p>
+														<p><span class="label label-danger">NOTE</span>&nbsp; All the styles from the CORE package also need to be imported in this file, before the component imports.</p>													</li>
+													<li>If you'd like to include other components on the same page, don't create multiple LESS files, but add all the imports in one file. You can create a LESS file for each page with just the resources used for that specific page, or you could create and use a single LESS file for the entire project.</li>
+													<li>In production, compile the LESS file and use the resulting minified CSS file in the HTML document.</li>
+												</ol>
+
+											</div>
+											
+											
+										</div>
+									</div>
+								</div>
+								<div class="separator bottom"></div>
+							</div>
+										</div>
+		</div>
+	</div>
+</div>
+</div>
+
+
+	<!-- Global -->
+	<script>
+	var basePath = '',
+		commonPath = '../assets/',
+		rootPath = '../',
+		DEV = false,
+		componentsPath = '../assets/components/';
+	
+	var primaryColor = '#eb6a5a',
+		dangerColor = '#b55151',
+		successColor = '#609450',
+		warningColor = '#ab7a4b',
+		inverseColor = '#45484d';
+	
+	var themerPrimaryColor = primaryColor;
+	</script>
+
+	<script src="../assets/components/library/bootstrap/js/bootstrap.min.js?v=v1.9.6&sv=v0.0.1"></script>
+<script src="../assets/components/plugins/slimscroll/jquery.slimscroll.js?v=v1.9.6&sv=v0.0.1"></script>
+<script src="../assets/components/modules/docs/docs/assets/angular/app/ng.app.js?v=v1.9.6&sv=v0.0.1"></script>
+<script src="../assets/components/modules/docs/assets/angular/filters/ng.filter.isarray.js?v=v1.9.6&sv=v0.0.1"></script>
+<script src="../assets/components/modules/docs/assets/angular/controllers/ng.ctrl.components.js?v=v1.9.6&sv=v0.0.1"></script>
+<script src="../assets/components/modules/docs/docs/assets/angular/directives/ng.docs.directive.components.js?v=v1.9.6&sv=v0.0.1"></script>
+<script src="../assets/components/plugins/prettyprint/assets/js/prettify.js?v=v1.9.6&sv=v0.0.1"></script>
+<script src="../assets/components/core/js/core.init.js?v=v1.9.6"></script>
+</body>
+</html>

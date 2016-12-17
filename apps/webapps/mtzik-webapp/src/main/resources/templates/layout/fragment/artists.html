@@ -1,0 +1,34 @@
+<div th:if="${artists.getTotalElements() > 0}">
+
+    <div class="row" th:if="${showmore == false}">
+        <div class="col-md-8">
+            <h4 class="text-faded" th:utext="#{addonf.search.result.artists(${artists.getTotalElements()})}">Artists</h4>
+        </div>
+        <div class="col-md-4 text-right">
+            <span th:text="#{addonf.search.show.by}">Monter par :</span>
+            <select id="bySize">
+                <option value="20" th:selected="${artists.getSize()==20}">20</option>
+                <option value="50"  th:selected="${artists.getSize()==50}">50</option>
+                <option value="100"  th:selected="${artists.getSize()==100}">100</option>
+            </select>
+        </div>
+    </div>
+    <h4 th:if="${showmore == true}" class="text-faded" th:utext="#{addonf.search.result.artists(${artists.getTotalElements()})}">Artists</h4>
+
+    <div class="row">
+        <div class="col-md-4" th:each="artist : ${artists.getContent()}">
+            <div class="row box-generic padding-none">
+                <div class="col-md-4">
+                    <img class="img-thumbnail" style="max-height: 64px;max-width:100%" th:if="${artist.photo !=null}" th:src="@{${session.staticUrl}+'artist/'+${artist.photo}}" />
+                    <img class="img-thumbnail" style="max-height: 64px;max-width:100%" th:if="${artist.photo ==null}" th:src="@{${session.staticUrl}+'artist/default.png'}" />
+                </div>
+                <div class="col-md-8">
+                    <a th:href="@{/artistPage.html(artistId=${artist.id})}" th:utext="${artist.fullName}">name</a>
+                    <p th:with="df=#{date.format}" th:utext="#{addonf.search.result.last.music.date(${#dates.format(artist.lastRelease,df)})}">Sortie le plus récente: 2014-01-08</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a th:if="${artists.hasNext() and showmore == true}" th:utext="#{addonf.search.result.more.artists.result}" th:href="@{/search/artist(q=${param.q})}">Voir plus d'artistes</a>
+</div>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+        layout:decorator="layout/home_layout">
+<head>
+
+    <script type="text/javascript" th:inline="javascript">
+            $(function(){
+                var sended = [[${sended}]];
+                if(sended){
+                    $('#confirmationModal').modal({show:true});
+                }
+            });
+    </script>
+</head>
+
+
+<body>
+
+<div layout:fragment="searchBar">
+    <div th:substituteby="layout/fragment/searchBar(activeSearch=${'home'})"></div>
+</div>
+
+
+<div layout:fragment="content" id="content">
+    <!-- Modal -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel" th:text="#{addonf.contactForm.modal.title}">Confirmation d'envoi</h4>
+                </div>
+                <div class="modal-body" th:utext="#{addonf.contactForm.modal.body}">
+                   <p>Votre message a été transmit, il sera traité prochainement ...</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" th:text="#{addonf.contactForm.modal.close}">Fermer</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container">
+
+        <div class="col-table">
+
+            <h4 class="innerAll margin-none border-bottom text-center bg-primary" th:utext="#{addonf.contactForm.title}"><i class="fa fa-pencil"></i> Create a new Account</h4>
+
+            <!-- col-table-row -->
+            <div class="col-table-row">
+
+                <!-- col-app -->
+                <div class="col-app col-unscrollable">
+
+                    <!-- col-app -->
+                    <div class="col-app animated fadeInDown">
+
+                        <div class="login">
+
+                            <div class="panel panel-default  col-sm-8 col-sm-offset-2">
+
+                                <div class="panel-body">
+
+                                    <form class="form-horizontal" role="form" th:action="@{/contactForm}" method="post" th:object="${contactForm}">
+
+                                        <div class="form-group" th:class="${#fields.hasErrors('email')}? 'form-group has-error' :'form-group'" >
+                                            <label for="email" class="control-label" th:text="#{addonf.contactForm.email.label}">Email</label>
+                                            <input type="email" class="form-control" id="email" th:placeholder="#{addonf.contactForm.email.placeholder}" placeholder="Votre E-mail" th:field="*{email}" />
+                                            <p  class="help-block" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Incorrect</p>
+                                        </div>
+
+                                        <div class="form-group" th:class="${#fields.hasErrors('subject')}? 'form-group has-error' :'form-group'" >
+                                            <label for="subject" class="control-label"  th:text="#{addonf.contactForm.subject.label}">Sujet</label>
+                                            <select id="subject" th:field="*{subject}">
+                                                <option th:each="s : ${subjects}" th:value="${s}" th:text="#{'reference.subject.'+${s}}"></option>
+                                            </select>
+                                            <p  class="help-block" th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}">Incorrect</p>
+                                        </div>
+
+
+                                        <div class="form-group" th:class="${#fields.hasErrors('message')}? 'form-group has-error' :'form-group'" >
+                                            <label for="message" class="control-label" th:text="#{addonf.contactForm.message.label}">Message</label>
+                                            <textarea type="text" class="form-control" id="message" th:placeholder="#{addonf.contactForm.message.placeholder}" placeholder="Votre message" th:field="*{message}" />
+                                            <p  class="help-block" th:if="${#fields.hasErrors('message')}" th:errors="*{message}">Incorrect</p>
+                                        </div>
+
+
+                                        <div class="form-group" th:class="${captchaError}? 'form-group has-error' :'form-group'" >
+                                            <label for="message" class="control-label" th:text="#{addonf.contactForm.captacha.label}">Validation par Captcha</label>
+                                            <div th:utext="${reCaptcha}"></div>
+                                            <p  class="help-block" th:if="${captchaError}" th:text="#{addonf.contactForm.captacha.error}">erreur de Captcha</p>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary"  th:text="#{addonf.contactForm.btn.send}">Envoyer</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+</body>
+</html>

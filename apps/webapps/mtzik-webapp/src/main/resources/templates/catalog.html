@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+        xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+        layout:decorator="layout/catalog_layout">
+<head>
+    <title>MTZik</title>
+
+</head>
+
+
+<body>
+<div layout:fragment="content" id="content">
+    <div class="bg-gray border-bottom innerT">
+        <div class="container innerTB inner-2x">
+            <div th:substituteby="layout/fragment/bugPush"></div>
+        </div>
+        <div class="container">
+            <div class="row innerTB">
+                <div class="col-md-9">
+                    <h5 class="text-faded" th:text="#{addonf.catalog.filter}">Filter Products</h5>
+
+                    <div class="product-filter">
+                    <!-- Filters -->
+                        <div class="filter-bar bg-white">
+                            <form class="margin-none form-inline">
+                                <div class="row margin-none">
+
+                                    <div class="col-md-8">
+                                        <div class="row margin-none">
+                                            <div class="form-group col-md-6 padding-none">
+                                                <label class="label-control">Sort:</label>
+
+                                                <div class="col-md-6 padding-none">
+                                                    <select name="from" class="selectpicker margin-none" data-style="btn-default" data-width="100%">
+                                                        <option>A-Z</option>
+                                                        <option>Min to Max</option>
+                                                        <option>Popular</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                            <!-- // Select END -->
+
+                            <!-- Min -->
+                                            <div class="form-group col-md-3 padding-none">
+                                                <label>Min:</label>
+
+                                                <div class="input-group">
+                                                    <input type="text" name="from" class="form-control" value="100"/>
+                                                    <span class="input-group-addon"><i class="fa fa-euro"></i></span>
+                                                </div>
+                                            </div>
+                            <!-- // Min END -->
+                            <!-- Max -->
+                                            <div class="form-group col-md-3 padding-none">
+                                                <label>Max:</label>
+
+                                                <div class="input-group">
+                                                    <input type="text" name="from" class="form-control" value="500"/>
+                                                    <span class="input-group-addon"><i class="fa fa-euro"></i></span>
+                                                </div>
+                                            </div>
+                            <!-- // Max END -->
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 text-right">
+                                        <div class="form-group padding-none">
+                                            <div class="btn-group">
+                                                <a href="" class="btn btn-primary"><i class="fa fa-list"></i></a>
+                                                <a href="" class="btn btn-default"><i class="fa fa-th"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+        <!-- // Filters END -->
+
+
+                    </div>
+                    <div class="separator"></div>
+
+                    <h5 class="text-faded margin-none">Product Catalog</h5>
+
+                    <div class="row">
+
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="widget widget-pinterest" data-animate="bounceIn" data-delay="200">
+                            <div class="mark">
+                                <span class="caret caret-primary"></span>
+                                <span class="text">New</span>
+                            </div>
+                            <div class="widget-body padding-none">
+                                <a href="product.html?lang=en" class="thumb"><img src="../assets/images/fashion/female/1.jpg" alt=""
+                                                                                  class="img-responsive" /></a>
+
+                                <div class="description">
+                                    <a href="cart.html?lang=en" class="btn btn-primary btn-circle pull-right"><i
+                                            class="fa fa-shopping-cart"></i></a>
+                                    <h5 class="text-uppercase">Product name</h5>
+                                    <span class="text-primary text-medium text-condensed">&euro;120.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="widget widget-pinterest" data-animate="bounceIn" data-delay="200">
+                            <div class="mark">
+                                <span class="caret caret-primary"></span>
+                                <span class="text">New</span>
+                            </div>
+                            <div class="widget-body padding-none">
+                                <a href="product.html?lang=en" class="thumb"><img src="../assets/images/fashion/female/2.jpg" alt=""
+                                                                                  class="img-responsive"></a>
+
+                                <div class="description">
+                                    <a href="cart.html?lang=en" class="btn btn-primary btn-circle pull-right"><i
+                                            class="fa fa-shopping-cart"></i></a>
+                                    <h5 class="text-uppercase">Product name</h5>
+                                    <span class="text-primary text-medium text-condensed">&euro;125.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="widget widget-pinterest" data-animate="bounceIn" data-delay="200">
+                            <div class="widget-body padding-none">
+                                <a href="product.html?lang=en" class="thumb"><img src="../assets/images/fashion/female/3.jpg" alt=""
+                                                                                  class="img-responsive"></a>
+
+                                <div class="description">
+                                    <a href="cart.html?lang=en" class="btn btn-primary btn-circle pull-right"><i
+                                            class="fa fa-shopping-cart"></i></a>
+                                    <h5 class="text-uppercase">Product name</h5>
+                                    <span class="text-primary text-medium text-condensed">&euro;181.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="widget widget-pinterest" data-animate="bounceIn" data-delay="200">
+                            <div class="widget-body padding-none">
+                                <a href="product.html?lang=en" class="thumb"><img src="../assets/images/fashion/female/4.jpg" alt=""
+                                                                                  class="img-responsive"></a>
+
+                                <div class="description">
+                                    <a href="cart.html?lang=en" class="btn btn-primary btn-circle pull-right"><i
+                                            class="fa fa-shopping-cart"></i></a>
+                                    <h5 class="text-uppercase">Product name</h5>
+                                    <span class="text-primary text-medium text-condensed">&euro;296.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="widget widget-pinterest" data-animate="bounceIn" data-delay="200">
+                            <div class="widget-body padding-none">
+                                <a href="product.html?lang=en" class="thumb"><img src="../assets/images/fashion/female/5.jpg" alt=""
+                                                                                  class="img-responsive"></a>
+
+                                <div class="description">
+                                    <a href="cart.html?lang=en" class="btn btn-primary btn-circle pull-right"><i
+                                            class="fa fa-shopping-cart"></i></a>
+                                    <h5 class="text-uppercase">Product name</h5>
+                                    <span class="text-primary text-medium text-condensed">&euro;133.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="widget widget-pinterest" data-animate="bounceIn" data-delay="200">
+                            <div class="widget-body padding-none">
+                                <a href="product.html?lang=en" class="thumb"><img src="../assets/images/fashion/female/6.jpg" alt=""
+                                                                                  class="img-responsive"></a>
+
+                                <div class="description">
+                                    <a href="cart.html?lang=en" class="btn btn-primary btn-circle pull-right"><i
+                                            class="fa fa-shopping-cart"></i></a>
+                                    <h5 class="text-uppercase">Product name</h5>
+                                    <span class="text-primary text-medium text-condensed">&euro;124.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="widget widget-pinterest" data-animate="bounceIn" data-delay="200">
+                            <div class="widget-body padding-none">
+                                <a href="product.html?lang=en" class="thumb"><img src="../assets/images/fashion/female/7.jpg" alt=""
+                                                                                  class="img-responsive"></a>
+
+                                <div class="description">
+                                    <a href="cart.html?lang=en" class="btn btn-primary btn-circle pull-right"><i
+                                            class="fa fa-shopping-cart"></i></a>
+                                    <h5 class="text-uppercase">Product name</h5>
+                                    <span class="text-primary text-medium text-condensed">&euro;128.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="widget widget-pinterest" data-animate="bounceIn" data-delay="200">
+                            <div class="widget-body padding-none">
+                                <a href="product.html?lang=en" class="thumb"><img src="../assets/images/fashion/female/8.jpg" alt=""
+                                                                                  class="img-responsive"></a>
+
+                                <div class="description">
+                                    <a href="cart.html?lang=en" class="btn btn-primary btn-circle pull-right"><i
+                                            class="fa fa-shopping-cart"></i></a>
+                                    <h5 class="text-uppercase">Product name</h5>
+                                    <span class="text-primary text-medium text-condensed">&euro;186.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12" data-animate="bounceIn" data-delay="200">
+                        <div class="widget widget-pinterest">
+                            <div class="widget-body padding-none">
+                                <a href="product.html?lang=en" class="thumb"><img src="../assets/images/fashion/male/1.jpg" alt=""
+                                                                                  class="img-responsive"></a>
+
+                                <div class="description">
+                                    <a href="" class="btn btn-primary btn-circle pull-right"><i class="fa fa-shopping-cart"></i></a>
+                                    <h5 class="text-uppercase">Product name</h5>
+                                    <span class="text-primary text-medium text-condensed">&euro;170.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center innerT">
+                    <ul class="pagination pagination-centered margin-none">
+                        <li class="disabled"><a href="#">&laquo;</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+
+                </div>
+            </div>
+
+
+            <div class="col-md-3" data-animate="fadeInRight" data-delay="200">
+                <h5 class="text-faded">Browse categories</h5>
+                <ul class="list-group list-group-front">
+                    <li class="list-group-item active"><a href="catalog.html?lang=en"><i class="fa fa-female"></i> Woman</a></li>
+                    <li class="list-group-item"><a href="catalog.html?lang=en"><span
+                            class="badge pull-right badge-primary hidden-md">13</span><i class="fa fa-male"></i> Man</a></li>
+                    <li class="list-group-item"><a href="catalog.html?lang=en"><span
+                            class="badge pull-right badge-primary hidden-md">2</span><i class="fa fa-magic"></i> Accesories</a></li>
+                    <li class="list-group-item"><a href="catalog.html?lang=en"><span
+                            class="badge pull-right badge-primary hidden-md">2</span><i class="fa fa-pencil"></i> Shoes</a></li>
+                    <li class="list-group-item"><a href="catalog.html?lang=en"><span
+                            class="badge pull-right badge-primary hidden-md">13</span><i class="fa fa-refresh"></i> Kids</a></li>
+                    <li class="list-group-item"><a href="catalog.html?lang=en"><span
+                            class="badge pull-right badge-primary hidden-md">13</span><i class="fa fa-refresh"></i> Outlet</a></li>
+                    <li class="list-group-item"><a href="catalog.html?lang=en"><span
+                            class="badge pull-right badge-primary hidden-md">13</span><i class="fa fa-refresh"></i> Stores</a></li>
+                </ul>
+
+
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search Product">
+                        <span class="input-group-btn">
+                            <a href="#" class="btn btn-default"><i class="fa fa-search"></i></a>
+                        </span>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+mail    </div>
+</div>
+</body>
+</html>

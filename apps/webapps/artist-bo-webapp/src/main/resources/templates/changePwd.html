@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout/login">
+<head>
+    <title>Change password</title>
+</head>
+<body>
+<div class="content" layout:fragment="content">
+    <!-- BEGIN CHANGE PASSWORD FORM -->
+    <form class="login-form" method="POST" th:object="${changePasswordBean}" role="form">
+        <div class="form-title">
+            <span class="form-title">Welcome.</span>
+            <span class="form-subtitle">Change your password</span>
+        </div>
+
+        <div th:class="${#fields.hasErrors('password')}? 'form-group has-error' :'form-group'" >
+            <div th:class="${#fields.hasErrors('password')}? 'form-group has-error' :'form-group'" >
+                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password"/>
+                <span class="help-block" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Error message</span>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="button" id="back-btn" class="btn btn-default">Back</button>
+            <button type="submit" class="btn btn-primary uppercase pull-right">Submit</button>
+        </div>
+
+    </form>
+    <!-- END CHANGE PASSWORD FORM -->
+</div>
+
+<th:block layout:fragment="js">
+    <script>
+        jQuery(document).ready(function() {
+            Metronic.init(); // init metronic core components
+            Layout.init(); // init current layout
+        });
+    </script>
+</th:block>
+
+</body>
+</html>
+
+

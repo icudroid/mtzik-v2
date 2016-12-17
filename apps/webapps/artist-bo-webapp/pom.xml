@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>webapps</artifactId>
+        <groupId>fr.k2i.adbeback.mtzik.webapps</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>fr.k2i.adbeback.mtzik.webapps</groupId>
+    <artifactId>artist-bo-webapp</artifactId>
+    <packaging>jar</packaging>
+    <name>WEBAPPS - BO ARTIST WEBAPP</name>
+
+    <properties>
+        <assembly.descriptor.path>src/main/assembly/webapp-assembly-descriptor.xml</assembly.descriptor.path>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>fr.k2i.adbeback.mtzik.webapps</groupId>
+            <artifactId>common-resources</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>fr.k2i.adbeback.mtzik.core</groupId>
+            <artifactId>application-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>fr.k2i.adbeback.mtzik.core</groupId>
+            <artifactId>service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>fr.k2i.adbeback.mtzik.core</groupId>
+            <artifactId>repository-bo</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>fr.k2i.adbeback.mtzik.templates</groupId>
+            <artifactId>templates</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>edu.vt.middleware</groupId>
+            <artifactId>vt-password</artifactId>
+            <version>3.1.2</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>create-bundle</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>${assembly.descriptor.path}</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="ie lt-ie9 lt-ie8 lt-ie7 sidebar sidebar-discover sidebar-kis footer-sticky navbar-sticky"> <![endif]-->
+<!--[if IE 7]>    <html class="ie lt-ie9 lt-ie8 sidebar sidebar-discover sidebar-kis footer-sticky navbar-sticky"> <![endif]-->
+<!--[if IE 8]>    <html class="ie lt-ie9 sidebar sidebar-discover sidebar-kis footer-sticky navbar-sticky"> <![endif]-->
+<!--[if gt IE 8]> <html class="ie sidebar sidebar-discover sidebar-kis footer-sticky navbar-sticky"> <![endif]-->
+<!--[if !IE]><!--><html class="sidebar sidebar-discover sidebar-kis footer-sticky navbar-sticky"><!-- <![endif]-->
+<head>
+	<title>CORAL Template (v1.9.6)</title>
+	
+	<!-- Meta -->
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	
+	<!-- 
+	**********************************************************
+	In development, use the LESS files and the less.js compiler
+	instead of the minified CSS loaded by default.
+	**********************************************************
+	<link rel="stylesheet/less" href="../assets/less/admin/module.admin.stylesheet-complete.sidebar_type.discover.less" />
+	-->
+
+		<!--[if lt IE 9]><link rel="stylesheet" href="../assets/components/library/bootstrap/css/bootstrap.min.css" /><![endif]-->
+	<link rel="stylesheet" href="../assets/css/admin/module.admin.stylesheet-complete.sidebar_type.discover.min.css" />
+	
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+	<script src="../assets/components/plugins/ajaxify/script.min.js?v=v1.9.6&sv=v0.0.1"></script>
+
+<script>var App = {};</script>
+
+<script data-id="App.Scripts">
+App.Scripts = {
+
+	/* CORE scripts always load first; */
+	core: [
+		'../assets/components/library/jquery/jquery.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/library/modernizr/modernizr.js?v=v1.9.6&sv=v0.0.1'
+	],
+
+	/* PLUGINS_DEPENDENCY always load after CORE but before PLUGINS; */
+	plugins_dependency: [
+		'../assets/components/library/bootstrap/js/bootstrap.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/library/jquery/jquery-migrate.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/modules/admin/maps/vector/assets/lib/jquery-jvectormap-1.2.2.min.js?v=v1.9.6&sv=v0.0.1'
+	],
+
+	/* PLUGINS always load after CORE and PLUGINS_DEPENDENCY, but before the BUNDLE / initialization scripts; */
+	plugins: [
+		'../assets/components/plugins/nicescroll/jquery.nicescroll.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/plugins/breakpoints/breakpoints.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/plugins/ajaxify/davis.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/plugins/ajaxify/jquery.lazyjaxdavis.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/plugins/preload/pace/pace.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/modules/admin/charts/easy-pie/assets/lib/js/jquery.easy-pie-chart.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/modules/admin/charts/sparkline/jquery.sparkline.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/modules/admin/maps/vector/assets/lib/maps/jquery-jvectormap-world-mill-en.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/plugins/less-js/less.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/modules/admin/charts/flot/assets/lib/excanvas.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/plugins/browser/ie/ie.prototype.polyfill.js?v=v1.9.6&sv=v0.0.1'
+	],
+
+	/* The initialization scripts always load last and are automatically and dynamically loaded when AJAX navigation is enabled; */
+	bundle: [
+		'../assets/components/plugins/ajaxify/ajaxify.init.js?v=v1.9.6', 
+		'../assets/components/core/js/preload.pace.init.js?v=v1.9.6', 
+		'../assets/components/modules/admin/charts/easy-pie/assets/custom/easy-pie.init.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/modules/admin/charts/sparkline/sparkline.init.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/modules/admin/maps/vector/assets/custom/maps-vector.world-map-markers.init.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/core/js/sidebar.main.init.js?v=v1.9.6', 
+		'../assets/components/core/js/sidebar.discover.init.js?v=v1.9.6', 
+		'../assets/components/core/js/sidebar.kis.init.js?v=v1.9.6', 
+		'../assets/components/core/js/core.init.js?v=v1.9.6', 
+		'../assets/components/core/js/animations.init.js?v=v1.9.6'
+	]
+
+};
+</script>
+
+<script>
+$script(App.Scripts.core, 'core');
+
+$script.ready(['core'], function(){
+	$script(App.Scripts.plugins_dependency, 'plugins_dependency');
+});
+$script.ready(['core', 'plugins_dependency'], function(){
+	$script(App.Scripts.plugins, 'plugins');
+});
+$script.ready(['core', 'plugins_dependency', 'plugins'], function(){
+	$script(App.Scripts.bundle, 'bundle');
+});
+</script>
+	<script>if (/*@cc_on!@*/false && document.documentMode === 10) { document.documentElement.className+=' ie ie10'; }</script>
+	
+</head>
+<body class="scripts-async menu-right-hidden">
+	
+	<!-- Main Container Fluid -->
+	<div class="container-fluid menu-hidden">
+
+				<!-- Main Sidebar Menu -->
+		<div id="menu" class="hidden-print hidden-xs sidebar-blue sidebar-brand-primary">
+
+			<div id="sidebar-discover-wrapper">
+	<div id="logoWrapper">
+		<a href="index.html?lang=en" id="logo" class="animated fadeInDown"><img src="../assets/images/logo/app-logo-style-default.png" alt=""></a>
+		<div id="toggleNavbarColor" data-toggle="navbar-color">
+			<a href="" class="not-animated color color-blue active"></a>
+			<a href="" class="not-animated color color-white"></a>
+			<a href="" class="not-animated color bg-primary"></a>
+			<a href="" class="not-animated color color-inverse"></a>
+		</div>
+	</div>
+	<ul class="list-unstyled">
+
+		<li>
+			<a href="#sidebar-discover-example" data-toggle="sidebar-discover"><span class="badge pull-right badge-primary">7</span><i class="fa fa-stack-exchange"></i><span>Submenus</span></a>
+			<div id="sidebar-discover-example" class="sidebar-discover-menu">
+				<div class="innerAll text-center border-bottom text-white animated pulse">
+					<strong>Submenu example</strong>
+				</div>
+				<ul class="animated fadeIn">
+					<li class="active"><a href=""><i class="fa fa-flash"></i> Active</a></li>
+					<li><a href=""><i class="fa fa-male"></i> Menu item</a></li>
+					<li><a href=""><i class="fa fa-comments-o"></i> Menu item</a></li>
+					<li class="hasSubmenu">
+						<a href="#submenu" data-toggle="collapse"><span class="badge pull-right badge-primary">30</span><i class="fa fa-envelope"></i> 2nd level</a>
+						<ul class="collapse" id="submenu">
+							<li><a href="">Menu item</a></li>
+							<li><a href="">Menu item</a></li>
+							<li><a href="">Menu item</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</li>
+	
+		<li><a href="dashboard_analytics.html?lang=en"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+<li>
+	<a href="#sidebar-discover-account" data-toggle="sidebar-discover" class="glyphicons user"><i></i><span>Account</span></a>
+	<div id="sidebar-discover-account" class="sidebar-discover-menu">
+		<div class="innerAll text-center border-bottom text-white animated pulse">
+			<strong>Account</strong>
+		</div>
+		<ul class="animated fadeIn">
+			<li><a href="login.html?lang=en"><i class="fa fa-lock"></i> Login</a></li>
+			<li><a href="signup.html?lang=en"><i class="fa fa-pencil"></i> Signup</a></li>
+		</ul>
+	</div>
+</li>
+<li><a href="profile_resume.html?lang=en"><i class="fa fa-download"></i><span>Profile / CV</span></a></li>
+<li><a href="landing.html?lang=en"><i class="fa fa-share"></i><span>Landing</span></a></li>
+<li><a href="employees.html?lang=en" class="glyphicons group"><i></i><span>Employees</span></a></li>
+<li><a href="error.html?lang=en" class="glyphicons warning_sign"><i></i><span>Error</span></a></li>
+<li><a href="ui.html?lang=en" class="glyphicons adjust_alt"><i></i><span>Elements</span></a></li>
+	</ul>
+</div>
+
+
+
+
+			
+		</div>
+		<!-- // Main Sidebar Menu END -->
+		
+				<!-- Main Sidebar Menu -->
+		<div id="menu_kis" class="hidden-print sidebar-light">
+
+			<div>
+	<ul class="list-unstyled">
+
+		<li><a href="index.html?lang=en" class="glyphicons globe"><i></i><span>Social</span></a></li>
+
+<li><a href="realestate_listing_map.html?lang=en" class="glyphicons home"><i></i> Estate</a></li>
+
+<li><a href="events.html?lang=en" class="glyphicons google_maps"><i></i> Events</a></li>
+
+<li><a href="news.html?lang=en" class="glyphicons notes"><i></i> Content</a></li>
+
+<li><a href="gallery_video.html?lang=en" class="glyphicons picture"><i></i><span>Media</span></a></li>
+
+<li><a href="tasks.html?lang=en" class="glyphicons share_alt"><i></i><span>Tasks</span></a></li>
+
+<li><a href="support_tickets.html?lang=en" class="glyphicons life_preserver"><i></i><span>Support</span></a></li>
+
+<li><a href="medical_overview.html?lang=en" class="glyphicons circle_plus"><i></i><span>Medical</span></a></li>
+
+<li><a href="courses_2.html?lang=en" class="glyphicons crown"><i></i> Learning</a></li>
+
+<li><a href="finances.html?lang=en" class="glyphicons calculator"><i></i> Finance</a></li>
+
+<li><a href="shop_products.html?lang=en" class="glyphicons shopping_cart"><i></i><span>Shop</span></a></li>
+
+<li><a href="survey.html?lang=en" class="glyphicons turtle no-ajaxify"><i></i><span>Surveys</span></a></li>
+
+<li class="active"><a href="dashboard_analytics.html?lang=en" class="glyphicons plus"><i></i><span>Other</span></a></li>
+
+<li><a href="../front/index.html?lang=en" class="glyphicons leather" target="_blank"><i></i><span>Website</span></a></li>		
+	</ul>
+</div>
+
+
+			
+		</div>
+		<!-- // Main Sidebar Menu END -->
+				
+		<!-- Content -->
+		<div id="content">
+
+						
+				<div class="navbar hidden-print navbar-primary main" role="navigation">
+	<div class="user-action user-action-btn-navbar pull-left border-right">
+		<button class="btn btn-sm btn-navbar btn-primary btn-stroke"><i class="fa fa-bars fa-2x"></i></button>
+	</div>
+	<div class="col-md-3 padding-none visible-md visible-lg">
+    	<div class="input-group innerLR">
+      		<input type="text" class="form-control input-sm" placeholder="Search stories ...">
+      		<span class="input-group-btn">
+        		<button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+      		</span>
+    	</div><!-- /input-group -->
+  	</div>
+
+  	<div class="user-action visible-xs user-action-btn-navbar pull-right">
+		<button class="btn btn-sm btn-navbar-right btn-primary"><i class="fa fa-fw fa-arrow-right"></i><span class="menu-left-hidden-xs"> Modules</span></button>
+	</div>
+	<div class="user-action pull-right menu-right-hidden-xs menu-left-hidden-xs">
+		<div class="dropdown username hidden-xs pull-left">
+			<a class="dropdown-toggle " data-toggle="dropdown" href="#">
+				<span class="media margin-none">
+					<span class="pull-left"><img src="../assets/images/people/35/16.jpg" alt="user" class="img-circle"></span>
+					<span class="media-body">
+						Adrian Demian <span class="caret"></span> 
+					</span>
+				</span>
+			</a>
+			<ul class="dropdown-menu pull-right">
+				<li><a href="index.html?lang=en" class="glyphicons user"><i></i> Profile</a></li>
+				<li><a href="timeline.html?lang=en" class="glyphicons list"><i></i>Timeline</a></li>
+				<li><a href="social_messages.html?lang=en" class="glyphicons envelope"><i></i>Messages</a></li>
+				<li><a href="social_account.html?lang=en">Settings</a></li>
+				<li><a href="login.html?lang=en">Logout</a></li>
+		    </ul>
+		</div>
+		<div class="dropdown dropdown-icons padding-none">
+			<a data-toggle="dropdown" href="#" class="btn btn-primary btn-circle dropdown-toggle"><i class="fa fa-user"></i> </a>
+			<ul class="dropdown-menu">
+				<li data-toggle="tooltip" data-title="Photo Gallery" data-placement="left" data-container="body"><a href="gallery_photo.html?lang=en"><i class="fa fa-camera"></i></a></li>
+				<li data-toggle="tooltip" data-title="Tasks" data-placement="left" data-container="body"><a href="tasks.html?lang=en"><i class="fa fa-code-fork"></i></a></li>
+				<li data-toggle="tooltip" data-title="Employees" data-placement="left" data-container="body"><a href="employees.html?lang=en"><i class="fa fa-group"></i></a></li>
+				<li data-toggle="tooltip" data-title="Contacts" data-placement="left" data-container="body"><a href="contacts.html?lang=en"><i class="fa fa-phone-square"></i></a></li>
+			</ul>
+		</div>
+	</div>
+	<ul class="notifications pull-right hidden-xs">
+		<li class="dropdown notif">
+			<a href="" class="dropdown-toggle"  data-toggle="dropdown"><i class="notif-block fa fa-comments-o"></i><span class="badge badge-primary">7</span></a>
+			<ul class="dropdown-menu chat media-list">
+				<li class="media">
+			        <a class="pull-left" href="#"><img class="media-object thumb" src="../assets/images/people/100/15.jpg" alt="50x50" width="50"/></a>
+					<div class="media-body">
+			        	<span class="label label-default pull-right">5 min</span>
+			            <h5 class="media-heading">Adrian D.</h5>
+			            <p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+			        </div>
+				</li>
+		      	<li class="media">
+		          	<a class="pull-left" href="#"><img class="media-object thumb" src="../assets/images/people/100/16.jpg" alt="50x50" width="50"/></a>
+					<div class="media-body">
+			          	<span class="label label-default pull-right">2 days</span>
+			            <h5 class="media-heading">Jane B.</h5>
+			            <p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+			        </div>
+		        </li>
+			    <li class="media">
+		          	<a class="pull-left" href="#"><img class="media-object thumb" src="../assets/images/people/100/17.jpg" alt="50x50" width="50"/></a>
+			      	<div class="media-body">
+						<span class="label label-default pull-right">3 days</span>
+			            <h5 class="media-heading">Andrew M.</h5>
+			            <p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+			        </div>
+		        </li>
+		        <li><a href="#" class="btn btn-primary"><i class="fa fa-list"></i> <span>View all messages</span></a></li>
+	      </ul>
+		</li>
+	</ul>
+	<div class="clearfix"></div>
+</div>
+<!-- // END navbar -->
+
+
+
+
+
+						
+			<div id="menu-top">
+		<ul class="main pull-left">
+		<li class="dropdown">
+			<a data-toggle="dropdown" class="dropdown-toggle" href=""><i class="fa fa-fw fa-cog"></i> Layout <span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&layout_fixed=true" class="no-ajaxify">Fixed Layout with Top menu</a></li>
+				<li class="active"><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&layout_fixed=false" class="no-ajaxify">Fluid Layout with Sidebars</a></li>
+				<li><a href="layout/layout-fixed-menu-top.html?lang=en" class="no-ajaxify">Layout examples</a></li>
+		    </ul>
+		</li>
+		<li class="dropdown">
+			<a data-toggle="dropdown" class="dropdown-toggle" href=""><i class="fa fa-fw fa-suitcase"></i> UI KIT <span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li><a href="ui.html?lang=en">UI Elements</a></li>
+				<li><a href="icons.html?lang=en">Icons</a></li>
+				<li><a href="typography.html?lang=en">Typography</a></li>
+				<li><a href="widgets.html?lang=en">Widgets</a></li>
+				<li><a href="calendar.html?lang=en">Calendar</a></li>
+				<li><a href="tabs.html?lang=en">Tabs</a></li>
+				<li><a href="sliders.html?lang=en">Sliders</a></li>
+				<li><a href="charts.html?lang=en">Charts</a></li>
+				<li><a href="grid.html?lang=en">Grid</a></li>
+				<li><a href="notifications.html?lang=en">Notifications</a></li>
+				<li><a href="modals.html?lang=en">Modals</a></li>
+				<li><a href="thumbnails.html?lang=en">Thumbnails</a></li>
+				<li><a href="carousels.html?lang=en">Carousels</a></li>
+				<li><a href="image_crop.html?lang=en">Image Cropping</a></li>
+				<li><a href="twitter.html?lang=en">Twitter API</a></li>
+				<li><a href="infinite_scroll.html?lang=en">Infinite Scroll</a></li>
+		    </ul>
+		</li>
+		<li class="dropdown">
+			<a data-toggle="dropdown" class="dropdown-toggle" href=""><i class="fa fa-fw fa-check-square-o"></i> Forms <span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li><a href="form_wizards.html?lang=en">Form Wizards</a></li>
+				<li><a href="form_elements.html?lang=en">Form Elements</a></li>
+				<li><a href="form_validator.html?lang=en">Form Validator</a></li>
+				<li><a href="file_managers.html?lang=en">File Managers</a></li>
+		    </ul>
+		</li>
+		<li class="dropdown hidden-xs">
+			<a data-toggle="dropdown" class="dropdown-toggle" href=""><i class="fa fa-fw fa-table"></i> Tables <span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li><a href="tables.html?lang=en">Tables</a></li>
+				<li><a href="tables_responsive.html?lang=en">Responsive Tables</a></li>
+				<li><a href="pricing_tables.html?lang=en">Pricing Tables</a></li>
+		    </ul>
+		</li>
+	</ul>
+	<ul class="main pull-right visible-lg">
+		<li><a href="">Close <i class="fa fa-fw fa-times"></i></a></li>
+	</ul>
+	<ul class="colors pull-right hidden-xs">
+		
+				<li class="active"><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=style-default" style="background-color: #eb6a5a" class="no-ajaxify"><span class="hide">style-default</span></a></li>
+				<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=green" style="background-color: #87c844" class="no-ajaxify"><span class="hide">green</span></a></li>
+				<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=coral" style="background-color: #7eccc2" class="no-ajaxify"><span class="hide">coral</span></a></li>
+		
+		<li class="dropdown">
+			<a href="" data-toggle="dropdown" class="dropdown-toggle">
+				<span class="color inverse"></span>
+				<span class="color danger"></span>
+				<span class="color success"></span>
+				<span class="color info"></span>
+			</a>
+			<ul class="dropdown-menu pull-right">
+								<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=alizarin-crimson" class="no-ajaxify"><span class="color" style="background-color: #F06F6F"></span> alizarin-crimson</a></li>
+								<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=blue-gray" class="no-ajaxify"><span class="color" style="background-color: #7293CF"></span> blue-gray</a></li>
+								<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=brown" class="no-ajaxify"><span class="color" style="background-color: #d39174"></span> brown</a></li>
+								<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=purple-gray" class="no-ajaxify"><span class="color" style="background-color: #AF86B9"></span> purple-gray</a></li>
+								<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=purple-wine" class="no-ajaxify"><span class="color" style="background-color: #CC6788"></span> purple-wine</a></li>
+								<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=green-army" class="no-ajaxify"><span class="color" style="background-color: #9FB478"></span> green-army</a></li>
+								<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=black-and-white" class="no-ajaxify"><span class="color" style="background-color: #979797"></span> black-and-white</a></li>
+								<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=amazon" class="no-ajaxify"><span class="color" style="background-color: #8BC4B9"></span> amazon</a></li>
+								<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=amber" class="no-ajaxify"><span class="color" style="background-color: #CACA8A"></span> amber</a></li>
+								<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=android-green" class="no-ajaxify"><span class="color" style="background-color: #A9C784"></span> android-green</a></li>
+								<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=antique-brass" class="no-ajaxify"><span class="color" style="background-color: #B3998A"></span> antique-brass</a></li>
+								<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=antique-bronze" class="no-ajaxify"><span class="color" style="background-color: #8D8D6E"></span> antique-bronze</a></li>
+								<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=artichoke" class="no-ajaxify"><span class="color" style="background-color: #B0B69D"></span> artichoke</a></li>
+								<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=atomic-tangerine" class="no-ajaxify"><span class="color" style="background-color: #F19B69"></span> atomic-tangerine</a></li>
+								<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=bazaar" class="no-ajaxify"><span class="color" style="background-color: #98777B"></span> bazaar</a></li>
+								<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=bistre-brown" class="no-ajaxify"><span class="color" style="background-color: #C3A961"></span> bistre-brown</a></li>
+								<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=bittersweet" class="no-ajaxify"><span class="color" style="background-color: #d6725e"></span> bittersweet</a></li>
+								<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=blueberry" class="no-ajaxify"><span class="color" style="background-color: #7789D1"></span> blueberry</a></li>
+								<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=bud-green" class="no-ajaxify"><span class="color" style="background-color: #6fa362"></span> bud-green</a></li>
+								<li><a href="?module=admin&page=dashboard_users&url_rewrite=&build=&v=v1.9.6&sidebar_type=discover&skin=burnt-sienna" class="no-ajaxify"><span class="color" style="background-color: #E4968A"></span> burnt-sienna</a></li>
+							</ul>
+		</li>
+	</ul>
+	</div>
+
+
+			<div class="layout-app">
+
+			<div class="row row-app">
+	<div class="col-md-12">
+		<div class="col-separator col-separator-first col-unscrollable bg-none">
+			<div class="col-table">
+				
+				<div class="innerTB">
+					<h3 class="margin-none pull-left">Users Dashboard &nbsp;<i class="fa fa-fw fa-pencil text-muted"></i></h3>
+					<div class="btn-group pull-right">
+						<a href="dashboard_analytics.html?lang=en" class="btn btn-default"><i class="fa fa-fw fa-bar-chart-o"></i> Analytics</a>
+						<a href="dashboard_users.html?lang=en" class="btn btn-primary"><i class="fa fa-fw fa-user"></i> Users</a>
+						<a href="dashboard_overview.html?lang=en" class="btn btn-default"><i class="fa fa-fw fa-dashboard"></i> Overview</a>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				
+				<div class="col-separator-h"></div>
+
+				<div class="row">
+					<div class="col-md-4">
+						<div class="box-generic">
+							<div class="media innerAll">
+								<a href="" class="pull-left"><img src="../assets/images/people/100/16.jpg" width="60" alt=""></a>
+								<div class="media-body innerL half">
+									<h4 class="margin-none"><a href="" class="text-primary">Adrian Demian</a></h4>
+									<p class="strong">Senior UI Designer</p>
+									<div class="bg-gray">
+										<h5 class="innerAll border-bottom text-muted margin-none"><i class="fa fa-fw icon-briefcase-2"></i> MOSAICPRO LLC</h5>
+										<p class="margin-none innerAll"><a href="">4 members</a> <i class="fa fa-fw fa-code-fork fa-rotate-90"></i> <a href="">13 products</a></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box-generic padding-none">
+							<h4 class="innerAll margin-none border-bottom">Skills</h4>
+							<div class="innerAll">
+								<div class="innerAll">
+									<div class="progress bg-white progress-mini progress-primary count-outside add-outside"><div class="count">100%</div><div class="progress-bar progress-bar-primary" style="width: 100%;"></div><div class="add">HTML</div></div>
+									<div class="progress bg-white progress-mini progress-primary count-outside add-outside"><div class="count">90%</div><div class="progress-bar progress-bar-primary" style="width: 90%;"></div><div class="add">CSS</div></div>
+									<div class="progress bg-white progress-mini progress-primary count-outside add-outside"><div class="count">93%</div><div class="progress-bar progress-bar-primary" style="width: 93%;"></div><div class="add">jQuery</div></div>
+									<div class="progress bg-white progress-mini progress-primary count-outside add-outside"><div class="count">79%</div><div class="progress-bar progress-bar-primary" style="width: 79%;"></div><div class="add">PHP</div></div>
+								</div>
+							</div>
+						</div>
+						<div class="box-generic padding-none">
+							<h4 class="innerAll border-bottom margin-none">Experience</h4>
+							<div class="innerAll inner-2x">
+								<ul class="fa-ul">
+									<li class="text-info"><span class="pull-right text-faded text-small">just now</span><i class="fa fa-li fa-check"></i> CORAL - App &amp; Website</li>
+									<li><span class="pull-right text-faded text-small">14 days ago</span><i class="fa fa-li fa-check"></i> FLAT PLUS</li>
+									<li><span class="pull-right text-faded text-small">2 months ago</span><i class="fa fa-li fa-check"></i> FLAT KIT</li>
+									<li><span class="pull-right text-faded text-small">3 months ago</span><i class="fa fa-li fa-check"></i> QUICK Admin<li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="box-generic padding-none">
+							<h4 class="innerAll border-bottom margin-none"><i class="fa fa-fw fa-user"></i> Account Overview</h4>
+							<div class="innerAll bg-gray border-bottom inner-2x">
+								<i class="fa fa-6x icon-documents-line text-faded pull-right"></i>
+								<p>Status: Active</p>
+								<p>Due: &euro;29.50 (1 month)</p>
+								<p>Referrals: 10</p>
+							</div>
+							<div class="innerAll">
+								<a href="" class="text-underline">Go to account</a>
+							</div>
+						</div>
+						<div class="box-generic padding-none overflow-hidden">
+							<div class="innerAll inner-2x border-bottom">
+								<div class="btn-group pull-right">
+									<button class="btn btn-default"><i class="fa fa-caret-left"></i></button>
+									<button class="btn btn-default"><i class="fa fa-caret-right"></i></button>
+								</div>
+								<h4 class="text-uppercase text-primary">Wednesday</h4>
+								<p class="text-medium margin-none text-condensed">25.12.2013</p>
+							</div>
+							<div class="innerAll bg-gray">
+								<div class="innerLR innerB">
+									<div class="notebook">
+										<ul>
+											<li><i class="fa fa-fw fa-times"></i> Lunch with Dana</li>
+											<li><i class="fa fa-fw fa-times"></i> Email Adrian</li>
+											<li><i class="fa fa-fw fa-times"></i> Call Daniel</li>
+											<li><i class="fa fa-fw fa-times"></i> Some other important stuff</li>
+										</ul>
+									</div>
+								</div>
+								<div class="separator"></div>
+								<a href="" class="btn btn-sm btn-default"><i class="fa fa-plus fa-fw"></i> Add note</a>
+								<a href="" class="btn btn-sm text-muted"><i class="fa fa-envelope fa-fw"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						
+						<div class="box-generic padding-none overflow-hidden">
+							<div class="innerAll border-bottom">
+								<div class="media innerAll half">
+									<a href="" class="pull-left"><img src="../assets/images/people/35/3.jpg" alt=""></a>
+									<div class="media-body">
+										<h5 class="margin-none">Lisa Alda</h5>
+										<p class="text-small"><a href="" class="text-underline">Complete my profile now</a></p>
+										<p class="text-small margin-none innerB half">50% complete</p>
+										<div class="progress bg-gray progress-mini margin-none"><div class="progress-bar progress-bar-success" style="width: 50%;"></div></div>
+									</div>
+								</div>
+							</div>
+							<div class="innerAll bg-gray">
+								<div class="media innerAll half">
+									<a href="" class="pull-left innerAll bg-lightred"><i class="fa fa-fw icon-briefcase-1"></i></a>
+									<div class="media-body">
+										<h5 class="margin-none">MosaicPro LLC</h5>
+										<p class="text-small"><a href="" class="text-underline">Complete my company's profile now</a></p>
+										<p class="text-small margin-none innerB half">40% complete</p>
+										<div class="progress bg-white progress-mini margin-none"><div class="progress-bar progress-bar-success" style="width: 40%;"></div></div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="box-generic padding-none bg-gray overflow-hidden">
+							<div class="innerAll border-bottom">
+								<div class="media margin-none">
+									<a href="" class="pull-right"><i class="fa icon-comment-fill-2"></i></a>
+									<a href="" class="pull-left"><img src="../assets/images/people/50/8.jpg" alt="" class="img-circle"></a>
+									<div class="media-body innerT half">
+										<h4>Emanuel L.</h4>
+										<p class="margin-none">Project Manager</p>
+									</div>
+								</div>
+							</div>
+							<ul class="list-unstyled">
+								<li class="innerAll border-bottom">
+									<span class="badge badge-default pull-right">4</span>
+									<i class="fa fa-fw icon-user-1"></i> Team Members
+								</li>
+								<li class="innerAll border-bottom">
+									<span class="badge badge-default pull-right">4</span>
+									<i class="fa fa-fw fa-dashboard"></i> Active Projects
+								</li>
+								<li class="innerAll border-bottom">
+									<span class="badge badge-default pull-right">59</span>
+									<i class="fa fa-fw icon-browser-check"></i> Completed Tasks
+								</li>
+								<li class="innerAll border-bottom">
+									<span class="badge badge-default pull-right">3</span>
+									<i class="fa fa-fw fa-file-text-o"></i> Files under review
+								</li>
+								<li class="innerAll bg-white text-center">
+									<a href="" class="btn btn-info btn-sm">View Profile</a>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-8">
+						
+						<div class="row">
+							<div class="col-md-6">
+								
+							</div>
+							<div class="col-md-6">
+								
+								
+								
+							</div>
+						</div>
+
+					</div>
+					<div class="col-md-4">
+						
+						
+
+					</div>
+				</div>
+				
+				<div class="col-separator-h"></div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+		
+		</div>
+		</div>
+		<!-- // Content END -->
+		
+		<div class="clearfix"></div>
+		<!-- // Sidebar menu & content wrapper END -->
+		
+				<!-- Footer -->
+		<div id="footer" class="hidden-print">
+			
+			<!--  Copyright Line -->
+			<div class="copy">&copy; 2012 - 2014 - <a href="http://www.mosaicpro.biz">MosaicPro</a> - All Rights Reserved. <a href="http://themeforest.net/?ref=mosaicpro" target="_blank">Purchase CORAL on ThemeForest</a> - Current version: v1.9.6 / <a target="_blank" href="../assets/../../CHANGELOG.txt">changelog</a></div>
+			<!--  End Copyright Line -->
+	
+		</div>
+		<!-- // Footer END -->
+		
+				
+	</div>
+	<!-- // Main Container Fluid END -->
+	
+
+	<!-- Global -->
+	<script data-id="App.Config">
+	var basePath = '',
+		commonPath = '../assets/',
+		rootPath = '../',
+		DEV = false,
+		componentsPath = '../assets/components/',
+		layoutApp = false,
+		module = 'admin';
+	
+	var primaryColor = '#eb6a5a',
+		dangerColor = '#b55151',
+		successColor = '#609450',
+		infoColor = '#4a8bc2',
+		warningColor = '#ab7a4b',
+		inverseColor = '#45484d';
+	
+	var themerPrimaryColor = primaryColor;
+	</script>
+	
+		
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout/home_layout">
+<head>
+
+    <script type="text/javascript" th:inline="javascript">
+        $(function(){
+            var changed = [[${changed}]];
+            if(changed){
+                $('#confirm').modal({show:true});
+            }
+        });
+
+    </script>
+
+</head>
+
+
+<body>
+
+
+<div layout:fragment="searchBar">
+    <div th:substituteby="layout/fragment/searchBar(activeSearch=${'home'})"></div>
+</div>
+
+
+<div layout:fragment="content" id="content">
+
+    <div class="modal fade" id="confirm">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" th:text="#{addonf.changePwd.modal.title}">Confirmation de changement du mot de passe</h4>
+                </div>
+                <div class="modal-body" th:utext="#{addonf.changePwd.modal.body}">
+                    <p>Vous pouvez vous connecter avec votre nouveau mot de passe !!!</p>
+                </div>
+                <div class="modal-footer">
+                    <a  th:href="@{/}" class="btn btn-default" data-dismiss="modal" th:text="#{addonf.changePwd.modal.close}">Fermer</a>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <form class="form-signin" method="POST" th:object="${changePwdBean}" role="form">
+                    <h2 class="form-signin-heading" th:text="#{addonf.changePwd.heading}">Changement de votre mot de passe</h2>
+
+                    <div th:class="${#fields.hasErrors('oldPassword')}? 'form-group has-error' :'form-group'" >
+                        <label for="oldPassword" th:text="#{addonf.changePwd.oldPassword}">Nouveau mot de passe</label>
+                        <input class="form-control" type="password" id="oldPassword" value="" placeholder="Mot de passe" th:placeholder="#{addonf.changePwd.password.placeholder}" th:field="*{oldPassword}"/>
+                        <p  class="help-block" th:if="${#fields.hasErrors('oldPassword')}" th:errors="*{oldPassword}">Incorrect</p>
+                    </div>
+
+                    <div th:class="${#fields.hasErrors('newPassword')}? 'form-group has-error' :'form-group'" >
+                        <label for="newPassword" th:text="#{addonf.changePwd.password}">Nouveau mot de passe</label>
+                        <input class="form-control" type="password" id="newPassword" value="" placeholder="Mot de passe" th:placeholder="#{addonf.changePwd.password.placeholder}" th:field="*{newPassword}"/>
+                        <p  class="help-block" th:if="${#fields.hasErrors('newPassword')}" th:errors="*{newPassword}">Incorrect</p>
+                    </div>
+
+                    <div th:class="${#fields.hasErrors('newConfirmPassword')}? 'form-group has-error' :'form-group'" >
+                        <label for="newConfirmPassword" th:text="#{addonf.changePwd.newConfirmPassword}">Nouveau mot de passe</label>
+                        <input class="form-control" type="password" id="newConfirmPassword" value="" placeholder="Mot de passe" th:placeholder="#{addonf.changePwd.password.placeholder}" th:field="*{newConfirmPassword}"/>
+                        <p  class="help-block" th:if="${#fields.hasErrors('newConfirmPassword')}" th:errors="*{newConfirmPassword}">Incorrect</p>
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-primary btn-block" th:text="#{addonf.changePwd.btn}">Changer le mot de passe</button>
+                </form>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>

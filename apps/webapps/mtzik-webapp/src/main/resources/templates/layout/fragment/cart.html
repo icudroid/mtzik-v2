@@ -1,0 +1,15 @@
+<script th:src="@{/static/js/addonf/cart.js}"></script>
+
+<li class="center innerAll" th:text="#{addonf.cart}" >Your Shopping Cart</li>
+
+<li class="product-list" th:each="line : ${session.cart.lines}">
+    <a href="#" class="removeFromCart" th:attr="data-music=${line.idMedia}"><i class="fa fa-times"></i></a><a th:href="@{/product.html(musicId=${line.idMedia})}" th:utext="#{addonf.cart.line(${line.title})}">Coral Bootstrap T...  <span>3</span> </a>
+</li>
+
+<li class="cart-total">
+    <!--<span style="float: left;" th:utext="#{addonf.cart.total.label}">Total</span><span style="float: right;" th:utext="#{addon.cart.total(${session.cart.nbProduct})}">1</span>-->
+</li>
+
+<li class="cart-button">
+    <a th:href="@{/cart.html}" class="btn btn-primary" th:text="#{addonf.view.cart}"><i th:remove="none" class="fa fa-fw fa-shopping-cart"></i> View cart</a>
+</li>

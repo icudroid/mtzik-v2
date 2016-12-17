@@ -1,0 +1,60 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+apply plugin: 'spring-boot'
+apply plugin: 'war'
+
+dependencies {
+    compile project(':apps:webapps:common-resources')
+    compile project(':core:application-service')
+    compile project(':core:service')
+    compile project(':core:repository-bo')
+    compile project(':templates')
+    compile libs.vtPassword
+}
+
+
+task zip(type: Zip, dependsOn: bootRepackage) {
+    def fileName = "${jar.baseName}-${jar.version}"
+    includeEmptyDirs = true
+
+    from('build/libs') {
+        include '*.war'
+        into "${jar.version}/lib"
+    }
+
+    from (project(':apps:distrib').file('src/main/resources/startup-script.sh')) {
+        into "/${jar.version}/bin"
+        filter(ReplaceTokens,tokens: [appName: "artist-bo",fileName: "${fileName}.war".toString()])
+        rename { String file ->
+            "artist-bo.sh"
+        }
+        fileMode = 0755
+    }
+
+    from (project(':apps:distrib').file('src/main/resources/logback.xml')) {
+        into "/${jar.version}/conf"
+        filter(ReplaceTokens,tokens: [appLogFile: "artist-bo.log"])
+    }
+
+    from (project(':apps:distrib').file('src/main/resources/server.yml')) {
+        into "/${jar.version}/conf"
+    }
+
+    from ('src/main/resources/application.yml') {
+        into "${jar.version}/conf"
+    }
+}
+
+task zipStatics(type: Zip, dependsOn: bootRepackage){
+    archiveName="${jar.baseName}-statics-${jar.version}.zip"
+    from (project(':apps:webapps:common-resources').files('src/main/resources/static')) {
+
+    }
+    from('src/main/resources/static') {
+        exclude '*.yml'
+        exclude 'logback.xml'
+    }
+}
+
+build.dependsOn(zip)
+build.dependsOn(zipStatics)

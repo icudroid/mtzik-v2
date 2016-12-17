@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout/home_layout">
+<head>
+
+
+
+    <script type="text/javascript" th:inline="javascript">
+
+            $(function(){
+                var sended = [[${sended}]];
+                if(sended){
+                    $('#confirm').modal({show:true});
+                }
+            });
+
+    </script>
+
+
+</head>
+
+
+<body>
+
+<div layout:fragment="searchBar">
+    <div th:substituteby="layout/fragment/searchBar(activeSearch=${'home'})"></div>
+</div>
+
+
+<div layout:fragment="content" id="content">
+
+    <div class="modal fade" id="confirm">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" th:text="#{addonf.getForgottenPwd.modal.title}">Confirmation</h4>
+                </div>
+                <div class="modal-body"  th:utext="#{addonf.getForgottenPwd.modal.body}">
+                    <p>Vous allez recevoir un email pour réinitiaser votre mot de passe !!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" th:text="#{addonf.getForgottenPwd.modal.close}">Fermer</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <form class="form-signin" th:action="@{/getForgottenPwd}" method="POST" th:object="${passwordBean}" role="form">
+                    <h2 class="form-signin-heading" th:text="#{addonf.getForgottenPwd.heading}">Mot de pass oublie</h2>
+                    <div th:class="${#fields.hasErrors('username')}? 'form-group has-error' :'form-group'" >
+                        <label for="username" th:text="#{addonf.getForgottenPwd.username}">Pseudo ou email</label>
+                        <input class="form-control" type="text" id="username" value="" th:placeholder="#{addonf.getForgottenPwd.username.placeholder}" placeholder="pseudo ou email" th:field="*{username}"/>
+                        <p  class="help-block" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Incorrect</p>
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-primary btn-block" th:text="#{addonf.getForgottenPwd.btn.send}">Recevoir un Email</button>
+                </form>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

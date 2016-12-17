@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html
+       xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout/home_layout">
+<head>
+
+    <link rel="stylesheet" th:href="@{/static/css/chosen-mtzik.css}"/>
+    <script th:src="@{/static/lib/chosen-1.0/chosen.jquery.js}"></script>
+
+    <script th:src="@{/static/coral/assets/components/plugins/owl-carousel/owl.carousel.min.js}"></script>
+    <script th:src="@{/static/coral/assets/components/plugins/holder/holder.js}"></script>
+    <script th:src="@{/static/coral/assets/components/plugins/parallax/stellar/jquery.stellar.min.js}"></script>
+    <script th:src="@{/static/coral/assets/components/plugins/parallax/waypoints/waypoints.min.js}"></script>
+    <script th:src="@{/static/coral/assets/components/plugins/appear/jquery.appear.js}"></script>
+    <script th:src="@{/static/js/addonf/front.shop.owl-carousel.featured.init.js}"></script>
+    <script th:src="@{/static/js/addonf/search.js}"></script>
+
+
+    <script th:src="@{/static/js/addonf/home.js}"></script>
+
+
+    <script th:inline="javascript">
+
+
+    </script>
+
+
+</head>
+
+
+<body>
+    <div layout:fragment="searchBar">
+        <div th:substituteby="layout/fragment/searchBar(activeSearch=${'home'})"></div>
+    </div>
+
+
+    <div layout:fragment="content" id="content">
+
+    <div th:substituteby="layout/fragment/push"></div>
+
+    <div class="container">
+        <div class="row innerTB">
+            <div class="col-md-9">
+                <h2 class="margin-none" th:text="#{addonf.home.news}">News</h2>
+                <select class="genre-select-news" th:attr="data-placeholder=#{addonf.genre.select}" >
+                    <option value="-1"></option>
+                    <option th:each="category : ${categories}" th:value="${category.id}"><span th:text="#{'addonf.reference.genre.'+${category.codeGenre}}">Catégorie</span></option>
+                </select>
+
+                <div class="col-md-12" id="loading-news" style="display:none;background-color: #d9d9dd">
+                    <img th:src="@{/static/img/loading.gif}"/>
+                </div>
+
+
+                <div class="row" id="news">
+                    <div class="col-sm-3 col-xs-6" th:each="newMusic : ${news}">
+                        <div class="widget widget-pinterest" data-animate="bounceIn" data-delay="200">
+                            <div class="mark">
+                                <span class="caret caret-default"></span>
+                                <span class="text" th:text="#{addonf.slider.newMusic}">New</span>
+                            </div>
+                            <div class="widget-body padding-none">
+                                <a th:href="@{/product.html(musicId=${newMusic.id})}" class="thumb">
+                                    <img th:src="@{${session.staticUrl}+'jacket/'+${newMusic.jacket}}" alt="Jacket" class="img-responsive" />
+                                </a>
+                                <div class="description">
+                                    <a href="#" class="btn btn-primary btn-circle pull-right addToCart" th:attr="data-music=${newMusic.id}"><i class="fa fa-shopping-cart"></i></a>
+                                    <a href="#" class="btn btn-primary btn-circle pull-right playMusic" th:attr="data-music=${newMusic.id}" style="margin-right: 2px;"><i class="fa fa fa-play"></i></a>
+                                    <h5 class="text-uppercase" th:text="${newMusic.title}" style="height:3em">Product name</h5>
+                                    <!--<span class="text-primary text-medium text-condensed"  th:text="#{addonf.price(${newMusic.nbAdsNeeded})}" >&euro;216.00</span>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div style="display: none;" class="clone-news">
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="widget widget-pinterest" data-animate="bounceIn" data-delay="200">
+                            <div class="mark">
+                                <span class="caret caret-default"></span>
+                                <span class="text" th:text="#{addonf.slider.newMusic}">New</span>
+                            </div>
+                            <div class="widget-body padding-none">
+                                <a th:href="@{/product.html(musicId='ID')}" class="thumb">
+                                    <img th:src="@{${session.staticUrl}+'jacket/##JACKET##'}" alt="Jacket" class="img-responsive" />
+                                </a>
+                                <div class="description">
+                                    <a href="#" class="btn btn-primary btn-circle pull-right addToCart" data-music="##ID##"><i class="fa fa-shopping-cart"></i></a>
+                                    <a href="#" class="btn btn-primary btn-circle pull-right playMusic" data-music="##ID##" style="margin-right: 2px;"><i class="fa fa fa-play"></i></a>
+                                    <h5 class="text-uppercase" style="height:3em">##TITLE##</h5>
+                                    <!--<span class="text-primary text-medium text-condensed"  th:text="#{addonf.price(${'##NB_AD##'})}" >&euro;216.00</span>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div th:substituteby="layout/fragment/top10"></div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<assembly>
+	<id>resources</id>
+	<formats>
+		<format>tar.gz</format>
+	</formats>
+	<includeBaseDirectory>false</includeBaseDirectory>
+    <!--
+        First this maven module, then the template module.
+        For each module, we use the "compressed" folder first : it contains the minified js/css files.
+    -->
+	<fileSets>
+		<fileSet>
+			<directory>
+			    target/compressed
+			</directory>
+			<outputDirectory>/</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>
+				src/main/resources/static/static
+			</directory>
+			<outputDirectory>/</outputDirectory>
+		</fileSet>
+		<fileSet>
+            <directory>
+                ../common-resources/target/compressed
+            </directory>
+            <outputDirectory>/</outputDirectory>
+        </fileSet>
+		<fileSet>
+            <directory>
+                ../common-resources/src/main/resources/static/static
+            </directory>
+            <outputDirectory>/</outputDirectory>
+        </fileSet>
+	</fileSets>
+</assembly>

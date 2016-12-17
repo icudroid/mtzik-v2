@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="ie lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html class="ie lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html class="ie lt-ie9"> <![endif]-->
+<!--[if gt IE 8]> <html class=""> <![endif]-->
+<!--[if !IE]><!--><html class=""><!-- <![endif]-->
+<head>
+	<title>CORAL Front Template (v1.9.6)</title>
+	
+	<!-- Meta -->
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	
+	<!-- 
+	**********************************************************
+	In development, use the LESS files and the less.js compiler
+	instead of the minified CSS loaded by default.
+	**********************************************************
+	<link rel="stylesheet/less" href="../assets/less/realestate/module.realestate.stylesheet-complete.sidebar_type.fusion.less" />
+	-->
+
+		<!--[if lt IE 9]><link rel="stylesheet" href="../assets/components/library/bootstrap/css/bootstrap.min.css" /><![endif]-->
+	<link rel="stylesheet" href="../assets/css/realestate/module.realestate.stylesheet-complete.sidebar_type.fusion.min.css" />
+	
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+	<script src="../assets/components/plugins/ajaxify/script.min.js?v=v1.9.6&sv=v0.0.1"></script>
+
+<script>var App = {};</script>
+
+<script data-id="App.Scripts">
+App.Scripts = {
+
+	/* CORE scripts always load first; */
+	core: [
+		'../assets/components/library/jquery/jquery.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/library/modernizr/modernizr.js?v=v1.9.6&sv=v0.0.1'
+	],
+
+	/* PLUGINS_DEPENDENCY always load after CORE but before PLUGINS; */
+	plugins_dependency: [
+		'../assets/components/library/bootstrap/js/bootstrap.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/library/jquery/jquery-migrate.min.js?v=v1.9.6&sv=v0.0.1'
+	],
+
+	/* PLUGINS always load after CORE and PLUGINS_DEPENDENCY, but before the BUNDLE / initialization scripts; */
+	plugins: [
+		'../assets/components/plugins/ajaxify/davis.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/plugins/ajaxify/jquery.lazyjaxdavis.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/plugins/preload/pace/pace.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/plugins/less-js/less.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/modules/admin/charts/flot/assets/lib/excanvas.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/plugins/browser/ie/ie.prototype.polyfill.js?v=v1.9.6&sv=v0.0.1'
+	],
+
+	/* The initialization scripts always load last and are automatically and dynamically loaded when AJAX navigation is enabled; */
+	bundle: [
+		'../assets/components/plugins/ajaxify/ajaxify.init.js?v=v1.9.6', 
+		'../assets/components/core/js/preload.pace.init.js?v=v1.9.6', 
+		'../assets/components/modules/front/core/assets/js/front.core.init.js?v=v1.9.6'
+	]
+
+};
+</script>
+
+<script>
+$script(App.Scripts.core, 'core');
+
+$script.ready(['core'], function(){
+	$script(App.Scripts.plugins_dependency, 'plugins_dependency');
+});
+$script.ready(['core', 'plugins_dependency'], function(){
+	$script(App.Scripts.plugins, 'plugins');
+});
+$script.ready(['core', 'plugins_dependency', 'plugins'], function(){
+	$script(App.Scripts.bundle, 'bundle');
+});
+</script>
+	<script>if (/*@cc_on!@*/false && document.documentMode === 10) { document.documentElement.className+=' ie ie10'; }</script>
+	
+</head>
+<body>
+
+	<div class="container-fluid">
+
+	<div id="menu-top">
+	<div class="container">
+		<ul class="main pull-left">
+			<li><a target="_blank" href="../admin/index.html?lang=en"><i class="fa fa-fw fa-flash"></i> Social App</a></li>
+			<li><a target="_blank" href="../admin/medical_overview.html?lang=en"><i class="fa fa-fw fa-medkit"></i> Medical App</a></li>
+			<li><a target="_blank" href="../admin/finances.html?lang=en"><i class="fa fa-fw fa-credit-card"></i> Financial</a></li>
+			<li><a target="_blank" href="../admin/tasks.html?lang=en"><i class="fa fa-fw fa-question-circle"></i> Tasks</a></li>
+			<li><a target="_blank" href="../admin/courses.html?lang=en"><i class="fa fa-fw fa-book"></i> Courses</a></li>
+		</ul>
+		<ul class="colors pull-right hidden-xs">
+			
+						<li class="active"><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=style-default" style="background-color: #eb6a5a" class="no-ajaxify"><span class="hide">style-default</span></a></li>
+						<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=green" style="background-color: #87c844" class="no-ajaxify"><span class="hide">green</span></a></li>
+						<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=coral" style="background-color: #7eccc2" class="no-ajaxify"><span class="hide">coral</span></a></li>
+			
+			<li class="dropdown">
+				<a href="" data-toggle="dropdown" class="dropdown-toggle">
+					<span class="color inverse"></span>
+					<span class="color danger"></span>
+					<span class="color success"></span>
+					<span class="color info"></span>
+				</a>
+				<ul class="dropdown-menu pull-right">
+										<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=alizarin-crimson" class="no-ajaxify"><span class="color" style="background-color: #F06F6F"></span> alizarin-crimson</a></li>
+										<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=blue-gray" class="no-ajaxify"><span class="color" style="background-color: #7293CF"></span> blue-gray</a></li>
+										<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=brown" class="no-ajaxify"><span class="color" style="background-color: #d39174"></span> brown</a></li>
+										<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=purple-gray" class="no-ajaxify"><span class="color" style="background-color: #AF86B9"></span> purple-gray</a></li>
+										<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=purple-wine" class="no-ajaxify"><span class="color" style="background-color: #CC6788"></span> purple-wine</a></li>
+										<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=green-army" class="no-ajaxify"><span class="color" style="background-color: #9FB478"></span> green-army</a></li>
+										<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=black-and-white" class="no-ajaxify"><span class="color" style="background-color: #979797"></span> black-and-white</a></li>
+										<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=amazon" class="no-ajaxify"><span class="color" style="background-color: #8BC4B9"></span> amazon</a></li>
+										<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=amber" class="no-ajaxify"><span class="color" style="background-color: #CACA8A"></span> amber</a></li>
+										<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=android-green" class="no-ajaxify"><span class="color" style="background-color: #A9C784"></span> android-green</a></li>
+										<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=antique-brass" class="no-ajaxify"><span class="color" style="background-color: #B3998A"></span> antique-brass</a></li>
+										<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=antique-bronze" class="no-ajaxify"><span class="color" style="background-color: #8D8D6E"></span> antique-bronze</a></li>
+										<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=artichoke" class="no-ajaxify"><span class="color" style="background-color: #B0B69D"></span> artichoke</a></li>
+										<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=atomic-tangerine" class="no-ajaxify"><span class="color" style="background-color: #F19B69"></span> atomic-tangerine</a></li>
+										<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=bazaar" class="no-ajaxify"><span class="color" style="background-color: #98777B"></span> bazaar</a></li>
+										<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=bistre-brown" class="no-ajaxify"><span class="color" style="background-color: #C3A961"></span> bistre-brown</a></li>
+										<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=bittersweet" class="no-ajaxify"><span class="color" style="background-color: #d6725e"></span> bittersweet</a></li>
+										<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=blueberry" class="no-ajaxify"><span class="color" style="background-color: #7789D1"></span> blueberry</a></li>
+										<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=bud-green" class="no-ajaxify"><span class="color" style="background-color: #6fa362"></span> bud-green</a></li>
+										<li><a href="?module=realestate&page=index&url_rewrite=&build=&v=v1.9.6&sidebar_type=fusion&skin=burnt-sienna" class="no-ajaxify"><span class="color" style="background-color: #E4968A"></span> burnt-sienna</a></li>
+									</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+
+
+
+	<!-- Nav Bar -->   
+<div class="navbar navbar-coral navbar-fixed-top">
+    <!-- Nav Bar Header -->       
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle " data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar "></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html?lang=en">Coral</a>
+        </div>
+        <!-- Nav Bar Collapse -->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav main-menu">
+                <li class="active"><a href="index.html?lang=en" >Home</a></li>
+                <li><a href="map.html?lang=en">Map &nbsp;<span class="label label-primary">New</span></a></li>
+                <li><a href="listing.html?lang=en">Properties</a></li>
+                <li><a href="agent.html?lang=en">Agent page</a></li>
+            </ul>
+        </div> 
+        <!-- NavBar Collapse -->
+        <!-- Nav Bar Right -->          
+        <ul class="nav navbar-nav navbar-right right-side">
+            <!-- User LogIn Button -->
+            <li> 
+                <div class="btn-group">
+                    <a href="#login-menu" class="btn btn-login" data-toggle="collapse"> Login</a>
+                    <div class="collapse login" id="login-menu">
+                        <form action="">
+                            <div>
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="Email">
+                                    <span class="input-group-addon"><i class="fa fa-check"></i></span>
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <input type="password" class="form-control" placeholder="Password">
+                                    <span class="input-group-addon"><i class="fa fa-times"></i></span>
+                                </div>
+                            </div>
+                            <div class="pull-right">
+                                <i class="fa fa-refresh fa-spin"></i> <button type="button" class="btn btn-login">Login</button>
+                            </div>
+                            <div class="center">                          
+                                <a href="" class="recover-password">Recover Password <i class="fa fa-lock"></i></a>
+                            </div>
+                        </form>
+                    </div>
+                    <a href="" class="btn btn-signup glyphicons user_add"><i></i>Sign up</a>
+                </div>
+            </li>
+         
+        </ul>
+    </div>
+</div>
+
+
+
+	<div id="content"><div id="realestate-carousel-search" class="carousel slide" data-ride="carousel">
+    <div class="search">
+        <div class="search-box">
+            <h3><i class="fa fa-fw icon-home-fill-1"></i> Real Estate Search</h3>
+            <div class="separator"></div>
+            <ul class="list-unstyled">
+                <li><a href="listing.html?lang=en" class="btn btn-primary"><i class="fa fa-fw icon-home-1"></i> For Rent</a></li>
+                <li><a href="listing.html?lang=en" class="btn">Sale</a></li>
+                <li><a href="listing.html?lang=en" class="btn">Sharing</a></li>
+                <li><a href="listing.html?lang=en" class="btn ">Comercial</a></li>
+            </ul>
+            <div class="input-group input-group-lg">
+                <input type="text" class="form-control" placeholder="Search by Address, Region or Title"/>
+                <span class="input-group-btn">
+                    <a href="listing.html?lang=en" class="btn btn-primary"><i class="fa fa-fw icon-search"></i></a>
+                </span>
+            </div>
+        </div>
+    </div>
+    <ol class="carousel-indicators">
+        <li data-target="#realestate-carousel-search" data-slide-to="0" class="active"></li>
+        <li data-target="#realestate-carousel-search" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item active" id="item1"></div>
+        <div class="item" id="item2"></div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="innerAll spacing-x2">
+    
+        <div class="row">
+            <div class="col-md-9">
+                
+<div id="carousel-recently-added" class="carousel slide properties" data-ride="carousel">
+    <h5 class="text-uppercase text-faded margin-none">Recently Added</h5>
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-recently-added" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-recently-added" data-slide-to="1" class=""></li>
+    </ol>
+
+    <div class="carousel-inner">
+        <div class="item active">
+            <div class="row">
+
+                                <div class="col-sm-4">
+                    <div class="widget widget-pinterest fixed-height" data-animate="bounceIn" data-delay="0">
+                                                <div class="mark">
+                            <span class="caret caret-default"></span>
+                            <span class="text">Sale</span>  
+                        </div>
+                                                <div class="widget-body padding-none">
+                            <a href="" class="thumb" data-height="150px"><img src="../assets/images/realestate/photodune-378874-real-estate-xs.jpg" alt="" class="img-responsive"></a>
+                            <div class="description border-bottom">
+                                <a href="" class="btn btn-primary btn-circle pull-right"><i class="fa fa-eye"></i></a>
+                                <h5 class="text-uppercase">Property for sale</h5>
+                                <span class="text-primary">&euro;85,886.00</span>
+                            </div>
+                            <div class="innerAll bg-gray">
+                                                                <i class="fa fa-fw icon-home-fill-1"></i> Agency
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+                                <div class="col-sm-4">
+                    <div class="widget widget-pinterest fixed-height" data-animate="bounceIn" data-delay="200">
+                                                <div class="mark">
+                            <span class="caret caret-default"></span>
+                            <span class="text">Sale</span>  
+                        </div>
+                                                <div class="widget-body padding-none">
+                            <a href="" class="thumb" data-height="150px"><img src="../assets/images/realestate/photodune-195203-houses-xs.jpg" alt="" class="img-responsive"></a>
+                            <div class="description border-bottom">
+                                <a href="" class="btn btn-primary btn-circle pull-right"><i class="fa fa-eye"></i></a>
+                                <h5 class="text-uppercase">Property for sale</h5>
+                                <span class="text-primary">&euro;73,633.00</span>
+                            </div>
+                            <div class="innerAll bg-gray">
+                                                                <i class="fa fa-fw icon-home-fill-1"></i> Agency
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+                                <div class="col-sm-4">
+                    <div class="widget widget-pinterest fixed-height" data-animate="bounceIn" data-delay="400">
+                                                <div class="mark">
+                            <span class="caret caret-default"></span>
+                            <span class="text">Sale</span>  
+                        </div>
+                                                <div class="widget-body padding-none">
+                            <a href="" class="thumb" data-height="150px"><img src="../assets/images/realestate/photodune-196089-house-xs.jpg" alt="" class="img-responsive"></a>
+                            <div class="description border-bottom">
+                                <a href="" class="btn btn-primary btn-circle pull-right"><i class="fa fa-eye"></i></a>
+                                <h5 class="text-uppercase">Property for sale</h5>
+                                <span class="text-primary">&euro;211,772.00</span>
+                            </div>
+                            <div class="innerAll bg-gray">
+                                                                <i class="fa fa-fw icon-user-1"></i> Individual
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="item">
+            <div class="row">
+                
+                                <div class="col-sm-4">
+                    <div class="widget widget-pinterest fixed-height" data-animate="bounceIn" data-delay="600">
+                                                <div class="mark">
+                            <span class="caret caret-primary"></span>
+                            <span class="text">Rent</span>  
+                        </div>
+                                                <div class="widget-body padding-none">
+                            <a href="" class="thumb" data-height="150px"><img src="../assets/images/realestate/photodune-197173-residential-home-xs.jpg" alt="" class="img-responsive"></a>
+                            <div class="description border-bottom">
+                                <a href="" class="btn btn-primary btn-circle pull-right"><i class="fa fa-eye"></i></a>
+                                <h5 class="text-uppercase">Residential Home</h5>
+                                <span class="text-primary">&euro;274,958.00</span>
+                            </div>
+                            <div class="innerAll bg-gray">
+                                                                <i class="fa fa-fw icon-user-1"></i> Individual
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+                                <div class="col-sm-4">
+                    <div class="widget widget-pinterest fixed-height" data-animate="bounceIn" data-delay="800">
+                                                <div class="mark">
+                            <span class="caret caret-primary"></span>
+                            <span class="text">Rent</span>  
+                        </div>
+                                                <div class="widget-body padding-none">
+                            <a href="" class="thumb" data-height="150px"><img src="../assets/images/realestate/photodune-3979102-superb-backyard-xs.jpg" alt="" class="img-responsive"></a>
+                            <div class="description border-bottom">
+                                <a href="" class="btn btn-primary btn-circle pull-right"><i class="fa fa-eye"></i></a>
+                                <h5 class="text-uppercase">Superb Backyard</h5>
+                                <span class="text-primary">&euro;53,427.00</span>
+                            </div>
+                            <div class="innerAll bg-gray">
+                                                                <i class="fa fa-fw icon-home-fill-1"></i> Agency
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+                                <div class="col-sm-4">
+                    <div class="widget widget-pinterest fixed-height" data-animate="bounceIn" data-delay="1000">
+                                                <div class="mark">
+                            <span class="caret caret-default"></span>
+                            <span class="text">Sale</span>  
+                        </div>
+                                                <div class="widget-body padding-none">
+                            <a href="" class="thumb" data-height="150px"><img src="../assets/images/realestate/photodune-2238345-apartments-xs.jpg" alt="" class="img-responsive"></a>
+                            <div class="description border-bottom">
+                                <a href="" class="btn btn-primary btn-circle pull-right"><i class="fa fa-eye"></i></a>
+                                <h5 class="text-uppercase">Appartments</h5>
+                                <span class="text-primary">&euro;132,792.00</span>
+                            </div>
+                            <div class="innerAll bg-gray">
+                                                                <i class="fa fa-fw icon-user-1"></i> Individual
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+                                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+                <div class="separator"></div>
+
+                <div class="bg-gray innerAll inner-2x box">
+                    <p class="lead margin-none pull-left"><span class="strong text-primary">Rent or Sell Your Property</span> on Coral Real Estate Today!</p>
+                    <a href="" class="btn btn-primary btn-sm pull-right"><i class="fa fa-fw fa-plus"></i> Add Property</a>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="separator"></div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="box-generic innerAll inner-2x">
+                            <h4 class="strong">For Rent</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="">Region / Location 1</a></li>
+                                <li><a href="">Region / Location 2</a></li>
+                                <li><a href="">Region / Location 3</a></li>
+                                <li><a href="">Region / Location 4</a></li>
+                                <li><a href="">Region / Location 5</a></li>
+                                <li><a href="">Region / Location 6</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box-generic innerAll inner-2x">
+                            <h4 class="strong">For Sale</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="">Region / Location 1</a></li>
+                                <li><a href="">Region / Location 2</a></li>
+                                <li><a href="">Region / Location 3</a></li>
+                                <li><a href="">Region / Location 4</a></li>
+                                <li><a href="">Region / Location 5</a></li>
+                                <li><a href="">Region / Location 6</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box-generic innerAll inner-2x">
+                            <h4 class="strong">Commercial</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="">Region / Location 1</a></li>
+                                <li><a href="">Region / Location 2</a></li>
+                                <li><a href="">Region / Location 3</a></li>
+                                <li><a href="">Region / Location 4</a></li>
+                                <li><a href="">Region / Location 5</a></li>
+                                <li><a href="">Region / Location 6</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h5 class="text-faded text-uppercase">Featured Property</h5>
+                <div class="box-generic bg-gray padding-none overflow-hidden">
+                    <a href=""><img src="../assets/images/realestate/photodune-1112879-modern-kitchen-in-luxury-mansion-xs.jpg" class="img-responsive"></a>
+                    <div class="innerAll inner-2x">
+                        <h4 class="strong">Kilmacanogue, Co. Wicklow</h4>
+                        <p class="text-medium text-condensed text-primary strong margin-none">&dollar; 79,000</p>
+                    </div>
+                </div>
+                <div class="separator"></div>
+                
+                <h5 class="text-faded text-uppercase">Browse properties</h5>
+                <ul class="list-group list-group-1 margin-none">
+	<li class="list-group-item active"><a href="#"><span class="badge badge-primary pull-right hidden-md">13</span><i class="fa fa-user"></i> For Rent</a></li>
+	<li class="list-group-item"><a href="#"><span class="badge pull-right badge-primary hidden-md">13</span><i class="fa fa-book"></i> For Sale</a></li>
+	<li class="list-group-item"><a href="#"><span class="badge pull-right badge-primary hidden-md">2</span><i class="fa fa-envelope"></i> Comercial</a></li>
+	<li class="list-group-item"><a href="#"><i class="fa fa-cogs"></i> Luxury</a></li>
+	<li class="list-group-item "><a href="#"><i class="fa fa-lock"></i>Contact us</a></li>
+</ul>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+			<div id="footer" class="hidden-print">
+				<div class="container">
+					
+					<ul class="list-unstyled center">
+			        	<li  class="active"><a href="index.html?lang=en">Home</a></li>
+			        	<li><a href="listing.html?lang=en">Listing</a></li>
+		                <li><a href="map.html?lang=en">Map</a></li>
+		                <li><a href="agent.html?lang=en">Agents</a></li>
+					</ul>
+					<div class="copy">Copyright &copy; 2013 CORAL. All Rights Reserved.</div>
+				
+					<div class="copy margin-none"><a href="http://themeforest.net/?ref=mosaicpro" target="_blank">Purchase CORAL on ThemeForest</a> - Current version: v1.9.6 / <a target="_blank" href="../assets/../../CHANGELOG.txt">changelog</a></div>
+
+				</div>		
+			</div>
+		</div>
+	</div>
+
+	<!-- Global -->
+	<script data-id="App.Config">
+	var basePath = '',
+		commonPath = '../assets/',
+		rootPath = '../',
+		DEV = false,
+		componentsPath = '../assets/components/',
+		layoutApp = false,
+		module = 'realestate';
+	
+	var primaryColor = '#eb6a5a',
+		dangerColor = '#b55151',
+		successColor = '#609450',
+		infoColor = '#4a8bc2',
+		warningColor = '#ab7a4b',
+		inverseColor = '#45484d';
+	
+	var themerPrimaryColor = primaryColor;
+	</script>
+	
+		
+
+</body>
+</html>

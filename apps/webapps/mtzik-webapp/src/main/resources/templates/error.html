@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+        layout:decorator="layout/home_layout">
+<head>
+<title>Error</title>
+</head>
+
+<body>
+<div layout:fragment="searchBar">
+    <div th:substituteby="layout/fragment/searchBar(activeSearch=${'home'})"></div>
+</div>
+
+
+<div layout:fragment="content" id="content">
+
+		<div id="created" th:text="${#dates.format(timestamp)}">July 11,2012 2:17:16 PM CDT</div>
+		<div>
+			There was an unexpected error (type=<span th:text="${error}">Bad</span>, status=<span th:text="${status}">500</span>).
+		</div>
+		<div th:text="${message}">Fake content</div>
+		<div>
+			Please contact the operator with the above information.
+		</div>
+</div>
+</body>
+</html>

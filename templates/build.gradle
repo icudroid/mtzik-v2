@@ -1,0 +1,8 @@
+apply plugin: 'spring-boot'
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter")
+}
+
+startScripts.enabled = false
+bootRepackage.enabled = false

@@ -1,0 +1,19 @@
+apply plugin: 'spring-boot'
+
+dependencies {
+    compile project(':core:repository-web')
+    compile project(':core:application-service')
+
+    compile project(':tools')
+
+    compile libs.commonsBeanutils
+    compile libs.bouncycastle
+
+    compile 'org.springframework:spring-test'
+    compile 'org.mockito:mockito-core'
+    compile 'junit:junit'
+}
+
+
+startScripts.enabled = false
+bootRepackage.enabled = false

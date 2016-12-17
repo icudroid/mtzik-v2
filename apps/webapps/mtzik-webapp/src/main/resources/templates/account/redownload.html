@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+        layout:decorator="layout/home_layout">
+<head>
+
+    <link rel="stylesheet" th:href="@{/static/css/chosen-mtzik.css}"/>
+    <script th:src="@{/static/lib/chosen-1.0/chosen.jquery.js}"></script>
+
+
+
+    <script>
+        $(function(){
+            $(".genre-select").chosen(
+                    {
+                        allow_single_deselect: true ,
+                        no_results_text: "Oops, nothing found!",
+                        inherit_select_classes: true,
+                        width:"100%"
+                    }
+            );
+
+            $("#previous").click(function(){
+                var $page = $("#page");
+                $page.val($page.val()-1);
+                $("#searchDownloadedForm").submit();
+                return false;
+            });
+            $("#next").click(function(){
+                var $page = $("#page");
+                $page.val($page.val()+1);
+                $("#searchDownloadedForm").submit();
+                return false;
+            });
+            $("#goPage").click(function(){
+                var $page = $("#page");
+                $page.val($("#pageNumber").val()-1);
+                $("#searchDownloadedForm").submit();
+                return false;
+            });
+
+            $("#bySize").change(function(){
+                var $size = $("#size");
+                $size.val($(this).val());
+                $("#searchDownloadedForm").submit();
+                return false;
+            });
+
+        });
+    </script>
+</head>
+
+
+<body>
+<div layout:fragment="searchBar">
+    <div th:substituteby="layout/fragment/searchBar(activeSearch=${'home'})"></div>
+</div>
+
+<div layout:fragment="content" id="content">
+    <div class="container">
+        <h3 class="innerTB margin-none search-closed" th:utext="#{addonf.downloaded.title}"><i class="fa fa-fw icon-volume-levels"></i> Recherche de Musiques</h3>
+        <div class="innerTB">
+            <form class="form-inline" role="form" th:action="@{/redownload}" th:object="${search}" id="searchDownloadedForm" method="post">
+                <input type="hidden" th:value="${musics.getNumber()}" name="page" id="page"/>
+                <input type="hidden" th:value="${musics.getSize()}" name="size" id="size"/>
+                <select class="genre-select" th:attr="data-placeholder=#{addonf.genre.select}" th:field="*{genreId}" >
+                    <option value="-1"></option>
+                    <option th:each="category : ${categories}" th:value="${category.id}"><span th:text="#{'addonf.reference.genre.'+${category.codeGenre}}">Catégorie</span></option>
+                </select>
+                <div class="separator"></div>
+                <div class="input-group col-md-12">
+                    <input type="text" th:placeholder="#{addonf.search.music.placeholder}" class="form-control" th:field="*{req}" />
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                        </span>
+                </div>
+            </form>
+        </div>
+
+
+        <div th:if="${musics.getTotalElements() > 0}">
+            <div th:if="${musics.getTotalElements() > 0}">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4 class="text-faded" th:utext="#{addonf.search.productors.musics(${musics.getTotalElements()})}">Musiques</h4>
+                    </div>
+                    <div class="col-md-4 text-right">
+                        <span th:text="#{addonf.search.show.by}">Monter par :</span>
+                        <select id="bySize">
+                            <option value="20" th:selected="${musics.getSize()==20}">20</option>
+                            <option value="50"  th:selected="${musics.getSize()==50}">50</option>
+                            <option value="100"  th:selected="${musics.getSize()==100}">100</option>
+                        </select>
+                    </div>
+                </div>
+
+                <table class="table table-bordered table-primary">
+                    <tr>
+                        <th th:utext="#{addonf.search.result.music.head.title}">Titre</th>
+                        <th th:utext="#{addonf.search.result.music.head.artists}">Artists</th>
+                        <th th:utext="#{addonf.search.result.music.head.productors}">Label</th>
+                        <th th:utext="#{addonf.search.result.music.head.genre}">Genre</th>
+                        <th th:utext="#{addonf.search.result.music.head.releaseDate}">Sortie le</th>
+                        <th class="center" style="width: 90px;"></th>
+                    </tr>
+                    <tr th:each="music : ${musics.getContent()}">
+                        <td>
+                            <div class="media">
+                                <a th:href="@{/product.html(musicId=${music.id})}" class="media-object pull-left hidden-xs">
+                                    <img width="50" height="50" style="width: 50px; height: 50px;" class="thumb"  th:src="@{${session.staticUrl}+'jacket/'+${music.jacket}}" alt="" />
+                                </a>
+                                <div class="media-body" style="padding-top:16px;">
+                                    <h5 class="text-uppercase" th:utext="${music.title}">Product name goes here</h5>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                                        <span th:each="artist,iterStat : ${music.artists}">
+                                            <a th:href="@{/artistPage.html(artistId=${artist.id})}" th:utext="${artist.fullName}">TOTO</a>
+                                            <span th:if="${!iterStat.last}">, </span>
+                                        </span>
+                        </td>
+                        <td>
+                                        <span th:each="productor,iterStat : ${music.productors}">
+                                            <a th:href="@{/majorPage.html(majorId=${productor.id})}" th:utext="${productor.fullName}">EMI</a>
+                                            <span th:if="${!iterStat.last}">, </span>
+                                        </span>
+                        </td>
+                        <td>
+                                        <span th:each="genre,iterStat : ${music.categories}">
+                                            <span th:utext="#{'addonf.reference.genre.'+${genre.codeGenre}}"></span>
+                                            <span th:if="${!iterStat.last}">, </span>
+                                        </span>
+                        </td>
+                        <td th:with="df=#{date.format}" th:utext="${#dates.format(music.releaseDate,df)}">></td>
+                        <td class="center">
+                            <a target="_blank" th:href="@{/redownloadMusic(musicId=${music.id})}" class="btn btn-primary btn-circle pull-right download" th:attr="data-music=${music.id}" style="padding-left: 10px;" th:utext="#{addonf.downloaded.download}"><i class="fa fa-download"></i> Download</a>
+                            <a href="#" class="btn btn-primary btn-circle pull-right playMusic" th:attr="data-music=${music.id}" style="margin-right: 2px;"><i class="fa fa fa-play"></i></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+
+
+
+
+            <div class="row text-center">
+                <div  style="margin-top: 10px;" class="col-md-4 text-center">
+                    <a class="btn btn-primary btn-circle" id="previous" href="#" th:if="${musics.hasPrevious()}"><i class="fa fa-arrow-left"></i></a>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="col-xs-3">
+                        <input type="number" class="form-control" value="0" th:value="${musics.getNumber()+1}" id="pageNumber"/>
+                    </div>
+                    <div class="col-xs-4">
+
+                        <span style="line-height: 30px;" th:utext="#{addonf.search.result.music.nb(${musics.getTotalPages()})}">&nbsp;sur 15&nbsp;
+
+                          </span>      </div>
+                    <div class="col-xs-4">
+
+                        <button id="goPage" class="btn btn-primary" type="submit">Go</button>
+                    </div>
+
+                </div>
+
+                <div style="margin-top: 10px;" class="col-md-4 text-center">
+                    <a class="btn btn-primary btn-circle" id="next" href="#" th:if="${musics.isLast()==false}"><i class="fa fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html
+       xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout/home_layout">
+<head>
+
+    <link rel="stylesheet" th:href="@{/static/css/chosen-mtzik.css}"/>
+
+    <script th:src="@{/static/lib/jquery-ui-1.10.3/ui/minified/jquery-ui.min.js}"></script>
+    <script th:src="@{/static/lib/chosen-1.0/chosen.jquery.js}"></script>
+    <script th:src="@{/static/coral/assets/components/plugins/owl-carousel/owl.carousel.min.js}"></script>
+    <script th:src="@{/static/coral/assets/components/plugins/holder/holder.js}"></script>
+    <script th:src="@{/static/coral/assets/components/plugins/parallax/stellar/jquery.stellar.min.js}"></script>
+    <script th:src="@{/static/coral/assets/components/plugins/parallax/waypoints/waypoints.min.js}"></script>
+    <script th:src="@{/static/coral/assets/components/plugins/appear/jquery.appear.js}"></script>
+    <script th:src="@{/static/js/addonf/parallax.init.js}"></script>
+    <script th:src="@{/static/js/addonf/front.shop.owl-carousel.featured.init.js}"></script>
+
+
+</head>
+
+
+<body>
+    <div layout:fragment="searchBar">
+        <div th:substituteby="layout/fragment/searchBar(activeSearch=${'home'})"></div>
+    </div>
+
+
+    <div layout:fragment="content" id="content">
+        <div class="container">
+
+
+            <div class="widget">
+                <div class="widget-body padding-none">
+                    <div class="jumbotron margin-none center bg-white">
+                        <h1 class="separator bottom">Donnez une nouvelle vie à vos publicités !!!</h1>
+                        <p>Avec notre système, vous pourrez rendre vos publicités ludiques. Et faire passer un message plus facilement.</p>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="table-pricing-3">
+                <ul class="list-unstyled row">
+                    <li class="col-md-4 active">
+                        <div class="innerAll">
+                            <h3>Validation par Logo</h3>
+                            <div class="body">
+                                <div class="price">
+                                    <span class="figure">0.30 &euro;</span>
+                                    <span class="term">par Validation</span>
+                                </div>
+                            </div>
+                            <div class="features">
+                                <ul>
+                                    <li>Une publicté validée signifie que l'utilisateur à <strong>reconnu votre Logo</strong></li>
+                                    <li>Une publicité vue jusqu'au bout n'est pas suffisant pour être validé</li>
+                                    <li><strong>Contrôlez votre budget</strong> en limitant le nombre de visualisation par jour</li>
+                                    <li><strong>Cibler votre publique</strong> par Age, Civilité, Ville et Pays.</li>
+                                    <li>Obtenez chaque jour <strong>des statistiques</strong> sur le nombres de validation et de non vue global</li>
+                                    <li><strong>Affiner votre communication</strong></li>
+                                </ul>
+                            </div>
+                            <div class="footer">
+                                <a href="http://www.adbeback.com/signup.html" class="btn btn-success">Inscrivez-vous !!!</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-md-4">
+                    </li>
+                    <li class="col-md-4  active">
+                        <div class="innerAll">
+                            <h3>Validation personnalisée</h3>
+                            <div class="body">
+                                <div class="price">
+                                    <span class="figure">0.35 &euro;</span>
+                                    <span class="term">par Validation</span>
+                                </div>
+                            </div>
+                            <div class="features">
+                                <ul>
+                                    <li>Une publicté validée signifie que l'utilisateur au répondu coorectement <strong>à votre question</strong></li>
+                                    <li>Les réponses peuvent être sous la forme de <strong>text et / ou d'image</strong></li>
+                                    <li>Une publicité vue jusqu'au bout n'est pas suffisant pour être validé</li>
+                                    <li><strong>Contrôlez votre budget</strong> en limitant le nombre de visualisation par jour</li>
+                                    <li><strong>Cibler votre publique</strong> par Age, Civilité, Ville et Pays.</li>
+                                    <li>Obtenez chaque jour <strong>des statistiques</strong> sur le nombres de validation et de non vue global</li>
+                                    <li><strong>Affiner votre communication</strong></li>
+                                </ul>
+                            </div>
+                            <div class="footer">
+                                <a href="http://www.adbeback.com/signup.html" class="btn btn-success">Inscrivez-vous !!!</a>
+                            </div>
+                        </div>
+                    </li>
+                    <div class="clearfix"></div>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

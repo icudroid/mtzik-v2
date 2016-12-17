@@ -1,0 +1,168 @@
+
+    <div th:class="${activeSearch == 'home'} ?'search-navbar':'search-navbar open'">
+        <div class="container">
+            <h3 class="innerTB margin-none search-closed" th:utext="#{'addonf.search.title.'+${activeSearch}}"><i class="fa fa-fw icon-volume-levels"></i> Recherche de Musiques</h3>
+            <div class="innerTB" th:switch="${activeSearch}">
+
+                <form th:action="@{/search/all}" th:case="'home'">
+                    <div class="input-group">
+                        <input type="text" class="form-control searchInput" th:placeholder="#{addonf.search.placeholder}" name="req" data-container="body" data-trigger="manual" data-placement="left" data-content="Commencer votre recherche ici" data-html="true"/>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default btn-primary searchBtn"><i class="fa fa-fw icon-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+
+                <form th:action="@{/search/all}" th:case="'all'">
+                    <div class="input-group">
+                        <input type="text" class="form-control searchInput" th:placeholder="#{addonf.search.placeholder}" th:object="${search}" id="searchForm" th:field="*{req}"/>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default btn-primary searchBtn"><i class="fa fa-fw icon-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+
+
+                <form class="form-inline" role="form" th:action="@{/search/music}" th:object="${search}" id="searchForm" th:case="'music'">
+                    <input type="hidden" th:value="${musics.getNumber()}" name="page" id="page"/>
+                    <input type="hidden" th:value="${musics.getSize()}" name="size" id="size"/>
+                    <select class="genre-select" th:attr="data-placeholder=#{addonf.genre.select}" th:field="*{genreId}" >
+                        <option value="-1"></option>
+                        <option th:each="category : ${categories}" th:value="${category.id}"><span th:text="#{'addonf.reference.genre.'+${category.codeGenre}}">Catégorie</span></option>
+                    </select>
+                    <div class="separator"></div>
+                    <div class="input-group col-md-12">
+                        <input type="text" th:placeholder="#{addonf.search.music.placeholder}" class="form-control" th:field="*{req}" />
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+
+                </form>
+
+
+                <form class="form-inline" role="form" th:action="@{/search/artist}" th:object="${search}" id="searchForm" th:case="'artist'">
+                    <input type="hidden" th:value="${artists.getNumber()}" name="page" id="page"/>
+                    <input type="hidden" th:value="${artists.getSize()}" name="size" id="size"/>
+                    <div class="input-group col-md-12">
+                        <input type="text" th:placeholder="#{addonf.search.artist.placeholder}" class="form-control" th:field="*{req}" />
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+
+                </form>
+
+
+                <form class="form-inline" role="form" th:action="@{/search/label}" th:object="${search}" id="searchForm" th:case="'label'">
+                    <input type="hidden" th:value="${productors.getNumber()}" name="page" id="page"/>
+                    <input type="hidden" th:value="${productors.getSize()}" name="size" id="size"/>
+                    <div class="input-group col-md-12">
+                        <input type="text" th:placeholder="#{addonf.search.label.placeholder}" class="form-control" th:field="*{req}" />
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+
+                </form>
+
+
+                <form class="form-inline" role="form" th:action="@{/search/news}" th:object="${search}" id="searchForm" th:case="'news'">
+                    <input type="hidden" th:value="${musics.getNumber()}" name="page" id="page"/>
+                    <input type="hidden" th:value="${musics.getSize()}" name="size" id="size"/>
+                    <select class="genre-select" th:attr="data-placeholder=#{addonf.genre.select}" th:field="*{genreId}" >
+                        <option value="-1"></option>
+                        <option th:each="category : ${categories}" th:value="${category.id}"><span th:text="#{'addonf.reference.genre.'+${category.codeGenre}}">Catégorie</span></option>
+                    </select>
+                    <div class="separator"></div>
+                    <div class="input-group col-md-12">
+                        <input type="text" th:placeholder="#{addonf.search.music.placeholder}" class="form-control" th:field="*{req}" />
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+
+                </form>
+
+
+                <form class="form-horizontal" role="form" th:action="@{/search/top50}" th:object="${search}" id="searchForm" th:case="'top50'">
+                    <input type="hidden" th:value="${musics.getNumber()}" name="page" id="page"/>
+                    <input type="hidden" th:value="${musics.getSize()}" name="size" id="size"/>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-5" th:text="#{addonf.search.byNews.inTop}">Parmis le top :</label>
+                        <div class="col-xs-2">
+                            <select class="form-control col-xs-3" th:field="*{top}">
+                                <option selected="selected" value="50">50</option>
+                                <option value="100">100</option>
+                                <option value="500">500</option>
+                                <option value="1000">1000</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <select class="genre-select" th:attr="data-placeholder=#{addonf.genre.select}" th:field="*{genreId}" >
+                        <option value="-1"></option>
+                        <option th:each="category : ${categories}" th:value="${category.id}"><span th:text="#{'addonf.reference.genre.'+${category.codeGenre}}">Catégorie</span></option>
+                    </select>
+                    <div class="separator"></div>
+                    <div class="input-group col-md-12">
+                        <input type="text" th:placeholder="#{addonf.search.music.placeholder}" class="form-control" th:field="*{req}" />
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+
+                </form>
+
+
+                <form th:action="@{artistPage.html(artistId=${param.artistId})}" method="post" th:case="'pageArtist'" th:object="${search}">
+                    <input type="hidden" th:value="${musics.getNumber()}" name="page" id="page"/>
+                    <input type="hidden" th:value="${musics.getSize()}" name="size" id="size"/>
+                    <div class="input-group">
+                        <input type="text" class="form-control searchInput" th:placeholder="#{addonf.search.artistPage.placeholder}" th:field="*{req}"/>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default btn-primary searchBtn"><i class="fa fa-fw icon-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+
+
+
+                <form class="form-inline" role="form" th:action="@{majorPage.html(majorId=${param.majorId})}" th:object="${search}" id="searchForm" th:case="'pageLabel'" method="post">
+                    <input type="hidden" th:value="${musics.getNumber()}" name="page" id="page"/>
+                    <input type="hidden" th:value="${musics.getSize()}" name="size" id="size"/>
+                    <select class="genre-select" th:attr="data-placeholder=#{addonf.genre.select}" th:field="*{genreId}" >
+                        <option value="-1"></option>
+                        <option th:each="category : ${categories}" th:value="${category.id}"><span th:text="#{'addonf.reference.genre.'+${category.codeGenre}}">Catégorie</span></option>
+                    </select>
+                    <div class="separator"></div>
+                    <div class="input-group col-md-12">
+                        <input type="text" th:placeholder="#{addonf.search.music.placeholder}" class="form-control" th:field="*{req}" />
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <div class="innerTB search-closed" th:switch="${activeSearch}">
+                <div th:case="'pageArtist'" class="separator"> </div>
+                <div th:case="'pageLabel'" class="separator"> </div>
+
+                <ul class="list-unstyled text-center" th:case="*">
+                    <li><a th:href="@{/search/all}"       th:class="${activeSearch == 'home' || activeSearch == 'all'} ?'btn btn-primary':'btn btn-default'" th:utext="#{addonf.search.byAll}"><i class="fa fa-fw  icon-search"></i> Tous</a></li>
+                    <li><a th:href="@{/search/music}"     th:class="${activeSearch == 'music'} ?'btn btn-primary':'btn btn-default'" th:utext="#{addonf.search.byMusic}"><i class="fa fa-fw  icon-albums"></i> Par Musique</a></li>
+                    <li><a th:href="@{/search/artist}"    th:class="${activeSearch == 'artist'}?'btn btn-primary':'btn btn-default'" th:utext="#{addonf.search.byArtist}"><i class="fa fa-fw  icon-user-2"></i> Par Artiste</a></li>
+                    <li><a th:href="@{/search/label}"     th:class="${activeSearch == 'label'} ?'btn btn-primary':'btn btn-default'" th:utext="#{addonf.search.byLabel}"><i class="fa fa-fw i icon-vinyl-record"></i> Par Label</a></li>
+                    <li><a th:href="@{/search/news}"      th:class="${activeSearch == 'news'}  ?'btn btn-primary':'btn btn-default'" th:utext="#{addonf.search.byNews}"><i class="fa fa-fw i icon-tag-fill-1"></i> Par Nouveauté</a></li>
+                    <li><a th:href="@{/search/top50}"     th:class="${activeSearch == 'top50'} ?'btn btn-primary':'btn btn-default'" th:utext="#{addonf.search.popular}"><i class="fa fa-fw i icon-music-heart"></i> Les plus télécharger</a></li>
+                </ul>
+            </div>
+
+            <button th:if="${activeSearch == 'home'}" class="btn btn-xs btn-primary search-closed" id="close-realestate-map-search"><i class="fa fa-fw fa-caret-up"></i></button>
+        </div>
+    </div>

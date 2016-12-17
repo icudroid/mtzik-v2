@@ -1,0 +1,28 @@
+apply plugin: 'spring-boot'
+
+dependencies {
+    compile project(':core:application-service')
+    compile project(':tools')
+
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+
+    compile 'org.springframework.security:spring-security-config'
+    compile 'org.springframework.security:spring-security-web'
+
+
+    compile libs.libphonenumber
+
+    compile libs.commonsFileupload
+
+    compile libs.postgres
+
+    compile 'org.thymeleaf:thymeleaf-spring4'
+    compile 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+    compile 'org.thymeleaf.extras:thymeleaf-extras-springsecurity3'
+    compile 'org.thymeleaf.extras:thymeleaf-extras-java8time:2.1.0.RELEASE'
+}
+
+
+startScripts.enabled = false
+bootRepackage.enabled = false

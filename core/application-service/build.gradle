@@ -1,0 +1,13 @@
+apply plugin: 'spring-boot'
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter")
+    compile libs.guava
+    compile libs.mail
+    compile 'org.thymeleaf:thymeleaf-spring4'
+    compile "javax.servlet:javax.servlet-api"
+    compile 'org.springframework:spring-context-support'
+}
+
+startScripts.enabled = false
+bootRepackage.enabled = false

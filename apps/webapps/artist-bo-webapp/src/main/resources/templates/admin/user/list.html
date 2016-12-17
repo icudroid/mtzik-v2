@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html       xmlns="http://www.w3.org/1999/xhtml"
+            xmlns:th="http://www.thymeleaf.org"
+            xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+            xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+            layout:decorator="layout/logged/logged"
+        >
+<head>
+</head>
+
+<th:block layout:fragment="css-add">
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../../common-resources/src/main/resources/static/static/metronic/assets/global/plugins/bootstrap-select/bootstrap-select.min.css"
+          th:href="@{/static/metronic/assets/global/plugins/bootstrap-select/bootstrap-select.min.css}"
+            />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../../common-resources/src/main/resources/static/static/metronic/assets/global/plugins/select2/select2.css"
+          th:href="@{/static/metronic/assets/global/plugins/select2/select2.css}"/>
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../../common-resources/src/main/resources/static/static/metronic/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"
+          th:href="@{/static/metronic/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css}"/>
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../../common-resources/src/main/resources/static/static/metronic/assets/global/plugins/bootstrap-editable/bootstrap-editable/css/bootstrap-editable.css"
+          th:href="@{/static/metronic/assets/global/plugins/bootstrap-editable/bootstrap-editable/css/bootstrap-editable.css}"
+            />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../../common-resources/src/main/resources/static/static/metronic/assets/global/plugins/bootstrap-datepicker/css/datepicker3.css"
+          th:href="@{/static/metronic/assets/global/plugins/bootstrap-datepicker/css/datepicker3.css}"
+            />
+</th:block>
+
+<body th:with="activeMenu=${'users'}">
+
+
+
+<div layout:fragment="content">
+
+    <div class="page-head">
+        <!-- BEGIN PAGE TITLE -->
+        <div class="page-title">
+            <h1>Utilisateur <small>Recherche</small></h1>
+        </div>
+        <!-- END PAGE TITLE -->
+    </div>
+
+
+    <div class="portlet box  blue-hoki">
+        <div class="portlet-title">
+            <div class="caption">
+                Recherche avancée
+            </div>
+            <div class="tools">
+                <a class="collapse" href="" data-original-title="" title=""></a>
+            </div>
+        </div>
+        <div class="portlet-body form">
+            <form id="advanced-search" role="form" class="form-horizontal" th:object="${command}">
+
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Identifiant</label>
+                                <div class="col-md-9">
+                                    <input type="text" th:field="*{identifiant}" class="form-control select2"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Prénom</label>
+                                <div class="col-md-9">
+                                    <input type="text" th:field="*{firstname}" class="form-control"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Nom</label>
+                                <div class="col-md-9">
+                                    <input type="text" th:field="*{lastname}" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8">
+
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Email</label>
+                                <div class="col-md-9">
+                                    <input type="text" th:field="*{lastname}" class="form-control"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Type</label>
+                                <div class="col-md-9">
+                                    <select th:field="*{userType}" class="form-control input-small bs-select">
+                                        <option th:each="type : ${userTypes}"
+                                                th:value="${type}"
+                                                th:text="#{${'UserType.' + type}}">MTZIK</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-actions right">
+                    <button class="btn green" type="submit">Rechercher</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="dashboard-stat2">
+        <table id="users" class="display table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+        </table>
+    </div>
+
+
+
+    <div class="modal fade" id="detailModal" role="basic" aria-hidden="true">
+        <div class="page-loading page-loading-boxed">
+            <img src="../../../../../../../common-resources/src/main/resources/static/static/metronic/assets/admin/layout4/img/loading-spinner-grey.gif"
+                 th:src="@{/static/metronic/assets/global/img/loading-spinner-grey.gif}" alt="" class="loading" />
+									<span>
+									&nbsp;&nbsp;Loading.. </span>
+        </div>
+        <div class="modal-dialog modal-full">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<th:block layout:fragment="js-add">
+
+
+
+    <script type="text/javascript" src="../../../../../../../common-resources/src/main/resources/static/static/metronic/assets/global/plugins/select2/select2.min.js"
+            th:src="@{/static/metronic/assets/global/plugins/select2/select2.min.js}"></script>
+
+
+    <script type="text/javascript" src="../../../../../../../common-resources/src/main/resources/static/static/metronic/assets/global/plugins/select2/select2_locale_fr.js"
+            th:src="@{/static/metronic/assets/global/plugins/select2/select2_locale_fr.js}"></script>
+
+    <script type="text/javascript" src="../../../../../../../common-resources/src/main/resources/static/static/metronic/assets/global/plugins/bootstrap-select/bootstrap-select.min.js"
+            th:src="@{/static/metronic/assets/global/plugins/bootstrap-select/bootstrap-select.min.js}"></script>
+
+    <script type="text/javascript" src="../../../../../../../common-resources/src/main/resources/static/static/metronic/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"
+            th:src="@{/static/metronic/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js}"
+            ></script>
+    <script type="text/javascript" src="../../../../../../../common-resources/src/main/resources/static/static/metronic/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"
+            th:src="@{/static/metronic/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js}"
+            ></script>
+
+
+    <script type="text/javascript" src="../../../../../../../common-resources/src/main/resources/static/static/metronic/assets/global/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.js"
+            th:src="@{/static/metronic/assets/global/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.js}"
+            ></script>
+
+
+    <script type="text/javascript" src="../../../../../../../common-resources/src/main/resources/static/static/metronic/assets/global/plugins/bootbox/bootbox.min.js"
+            th:src="@{/static/metronic/assets/global/plugins/bootbox/bootbox.min.js}"
+            ></script>
+
+
+    <script type="text/javascript" src="../../../../../../../common-resources/src/main/resources/static/static/metronic/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"
+            th:src="@{/static/metronic/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js}"
+            ></script>
+
+
+    <script type="text/javascript" src="../../../../../../../common-resources/src/main/resources/static/static/metronic/assets/global/plugins/bootstrap-datepicker/js/locales/bootstrap-datepicker.fr.js"
+            th:src="@{/static/metronic/assets/global/plugins/bootstrap-datepicker/js/locales/bootstrap-datepicker.fr.js}"
+            ></script>
+
+
+    <script type="text/javascript" src="../../../static/static/js/adbeback.js"
+            th:src="@{/static/js/adbeback.js}"></script>
+
+
+    <script type="text/javascript" src="../../../static/static/js/admin/user/user-list.js"
+            th:src="@{/static/js/admin/user/user-list.js}"></script>
+
+
+    <script type="text/javascript" src="../../../static/static/js/admin/user/detail-user-modal.js"
+            th:src="@{/static/js/admin/user/detail-user-modal.js}"></script>
+
+
+</th:block>
+
+<th:block layout:fragment="js-init">
+
+    <script  th:inline="javascript">
+        jQuery(document).ready(function() {
+            Metronic.init(); // init metronic core componets
+            Layout.init(); // init layout
+
+            var authorize = {};
+            <th:block  sec:authorize="hasRole('ROLE_USER_DETAIL_R')">authorize.detail = true;</th:block>
+            <th:block  sec:authorize="hasRole('ROLE_USER_CHANGE_STATE_R')">authorize.stateChange = true;</th:block>
+
+            new mtzik.user.ListController({
+                searchUrl : [[@{/admin/rest/user/search}]],
+                detailUrl : [[@{/admin/user/details/}]],
+                security : {
+                    authorize : authorize
+                },
+                i18n : {
+
+                    MTZIK : [[#{UserType.MTZIK}]],
+                    LABEL : [[#{UserType.LABEL}]],
+                    ARTIST :[[#{UserType.ARTIST}]],
+                    ADMIN:[[#{UserType.ADMIN}]]
+               }
+            });
+        });
+    </script>
+</th:block>
+
+</body>
+</html>

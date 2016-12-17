@@ -1,0 +1,9 @@
+required:
+  profile:
+    name: Le nom du profile est requis.
+    description: La description du profile est requise.
+  role:
+    name: Le nom du role est requis.
+    description:  La description du role est requise.
+exist:
+  profile: Le nom du role existe déjà.

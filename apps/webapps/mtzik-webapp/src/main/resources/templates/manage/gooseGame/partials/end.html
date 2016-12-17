@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+        layout:decorator="layout/home_layout">
+<head>
+    <script src="jquery.fullscreen.js" th:src="@{/static/js/external/jquery.fullscreen.js}"></script>
+    <script src="play.js" th:src="@{/static/js/addonf/play.js}"></script>
+</head>
+
+
+<body>
+
+<div layout:fragment="searchBar">
+    <div th:substituteby="layout/fragment/searchBar(activeSearch=${'home'})"></div>
+</div>
+
+
+<div layout:fragment="content" id="content">
+
+    <div class="page-title">
+        <div class="container">
+            <h1 class="text-center" th:utext="#{addonf.lost.title}">
+                Vous n'avez pas gagné !!!
+            </h1>
+        </div>
+    </div>
+
+    <div class="container text-center">
+        <a class="btn btn-primary strong" style="font-size: 26px;" th:inline="text" href="#/start">[[#{addonf.restart}]]</a>
+    </div>
+
+</div>
+
+</body>
+</html>

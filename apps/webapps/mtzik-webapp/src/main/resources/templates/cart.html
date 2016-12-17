@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html
+       xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout/home_layout"
+      ng-app="adgameApp">
+<head>
+
+   <script th:inline="javascript">
+       addonf.config = {};
+       addonf.config.idBtn = "#play";
+       addonf.config.paymentUrl = [[${paymentUrl}]];
+
+                $(function(){
+                    $(".back").click(function(){
+                        history.back();
+                        return false;
+                    });
+                });
+    </script>
+
+    <script src="transaction.js" th:src="@{/static/js/addonf/transaction.js}"></script>
+</head>
+
+
+<body>
+
+<div layout:fragment="searchBar">
+    <div th:substituteby="layout/fragment/searchBar(activeSearch=${'home'})"></div>
+</div>
+
+
+    <div layout:fragment="content" id="content">
+        <div class="container">
+            <a class="btn btn-default btn-sm back" th:utext="#{addonf.goBack}"><i class="fa fa-arrow-left fa-fw"></i> Back to Shopping</a>
+            <a th:if="${session.cart.nbProduct > 0}"  sec:authorize="hasRole('ROLE_USER')" th:href="@{/game.html}" class="btn btn-primary btn-sm" th:utext="#{addonf.cart.goGame}"><i class="fa fa-fw fa-check"></i> Play and Win</a>
+            <a th:if="${session.cart.nbProduct > 0}"  sec:authorize="isAnonymous()" th:href="@{/checkout.html}" class="btn btn-primary btn-sm" th:utext="#{addonf.backTo.checkout}"><i class="fa fa-fw fa-check"></i> Go to Checkout</a>
+        </div>
+
+    <div class="container">
+        <div class="heading-buttons">
+            <h3 th:utext="#{addonf.backTo.shopping.cart}">Shopping Cart <i class="fa fa-fw fa-shopping-cart text-faded"></i></h3>
+        </div>
+
+        <div class="separator bottom"></div>
+
+        <!-- Shopping cart -->
+        <div class="overflow-x" id="cartTable">
+            <table th:substituteby="layout/fragment/cartTable" />
+        </div>
+
+    </div>
+
+    <div class="bg-gray border-top innerTB inner-2x">
+        <div class="container innerTB inner-2x">
+            <!-- Row -->
+            <div class="row">
+
+                <!-- Column -->
+                <div class="col-md-6">
+
+                </div>
+                <!-- Column END -->
+
+                <!-- Column -->
+                <div class="col-md-3">
+                </div>
+                <!-- // Column END -->
+
+                <div class="col-md-3">
+                    <div class="box-generic padding-none text-center">
+                        <!--<p class="lead margin-none strong innerAll border-bottom" th:utext="#{addonf.cart.total(${session.cart.minScore})}">Total: &euro;1,195.95</p>-->
+                        <div class="innerAll">
+                            <a th:if="${session.cart.nbProduct > 0}" id="play" sec:authorize="hasRole('ROLE_USER')" href="javascript:;" class="btn btn-block btn-primary" th:utext="#{addonf.cart.goGame}"><i class="fa fa-fw fa-check"></i> Play and Win</a>
+                            <a th:if="${session.cart.nbProduct > 0}"  sec:authorize="isAnonymous()" th:href="@{/checkout.html}" class="btn btn-block btn-primary" th:utext="#{addonf.backTo.checkout}"><i class="fa fa-fw fa-check"></i> Go to Checkout</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- // Row END -->
+        </div>
+    </div>
+
+    </div>
+
+
+
+</body>
+</html>

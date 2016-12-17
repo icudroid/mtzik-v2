@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html
+       xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout/home_layout"
+      ng-app="adgameApp">
+<head>
+
+    <script th:inline="javascript">
+        addonf.config = {};
+        addonf.config.idBtn = "#login-4-game-btn,#dln";
+        addonf.config.paymentUrl = [[${paymentUrl}]];
+    </script>
+
+    <script src="transaction.js" th:src="@{/static/js/addonf/transaction.js}"></script>
+</head>
+
+
+<body>
+
+<div layout:fragment="searchBar">
+    <div th:substituteby="layout/fragment/searchBar(activeSearch=${'home'})"></div>
+</div>
+
+
+    <div layout:fragment="content" id="content">
+        <div class="container innerTB inner-2x">
+            <h2 class="margin-none" th:utext="#{addonf.checkout.title}">Checkout <i class="fa fa-fw fa-credit-card"></i></h2>
+        </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="box-generic padding-none">
+                    <h4 class="innerAll border-bottom margin-none" th:text="#{addonf.checkout.signup.title}">Checkout as a guest or register</h4>
+                    <h4 class="innerAll border-bottom margin-none">Vous pourrez télécharger jusqu'à 4 musiques en une seul fois</h4>
+                    <div class="innerAll inner-2x border-bottom text-center">
+                        <form th:action="@{/signup}" >
+                            <button type="submit" class="btn btn-primary btn-sm" th:text="#{addonf.checkout.signup.btn}">Signup</button>
+                        </form>
+                    </div>
+                    <div class="innerAll inner-2x">
+                        <p th:text="#{addonf.checkout.enroll.why}">Register with us and get:</p>
+                        <ul class="fa-ul">
+                            <li th:utext="#{addonf.checkout.ask.only.username}"><i class="fa fa-li fa-check text-primary"></i> Easy checkout process</li>
+                            <li th:utext="#{addonf.checkout.ask.only.bithdate}"><i class="fa fa-li fa-check text-primary"></i> Real time delivery tracking</li>
+                            <li th:utext="#{addonf.checkout.ask.only.zipcode}"><i class="fa fa-li fa-check text-primary"></i> Fast access to your order history</li>
+                            <li th:utext="#{addonf.checkout.ask.only.email}"><i class="fa fa-li fa-check text-primary"></i> Fast access to your order history</li>
+                            <li th:utext="#{addonf.checkout.ask.only.password}"><i class="fa fa-li fa-check text-primary"></i> Fast access to your order history</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box-generic padding-none">
+                    <h4 class="innerAll border-bottom margin-none" th:text="#{addonf.checkout.login.title}">Login</h4>
+                    <form action="#" class="margin-none" id="login-4-game">
+                        <div class="innerAll bg-gray border-bottom">
+                            <p class="margin-none" th:text="#{addonf.checkout.can.signin.below}">Already a member? Sign in below.</p>
+                        </div>
+                        <div class="innerAll inner-2x border-bottom">
+                            <div class="form-group has-error" id="error-login" style="display: none;">
+                                <p class="has-error help-block" th:text="#{addonf.checkout.login.error}">Error login</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="login" th:text="#{addonf.checkout.login}" class="control-label">Your email or Username</label>
+                                <input name="username" id="login" type="text" th:placeholder="#{addonf.checkout.username.placeholder}" placeholder="Type your username" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="password" th:text="#{addonf.checkout.pwd}" class="control-label">Your Password</label>
+                                <input name="password" id="password" type="password" th:placeholder="#{addonf.checkout.password.placeholder}" placeholder="Type your password" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="innerAll">
+                            <a  id="login-4-game-btn" data-log-before="true" class="btn btn-primary btn-sm" th:text="#{addonf.checkout.login.btn}">Login</a>
+                            &nbsp; <a th:href="@{/getForgottenPwd}" th:text="#{addonf.checkout.forgotten.pwd}">Forgot password</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box-generic padding-none">
+                    <h4 class="innerAll border-bottom margin-none" th:text="#{addonf.checkout.notloggued.play}">Télécharger</h4>
+                    <div class="innerAll inner-2x">
+                        <div class="lead innerAll text-center">
+                            <i class="fa fa-5x text-faded fa-cloud-download"></i>
+                            <div class="separator"></div>
+                            <p class="lead strong">
+                                <span th:utext="#{addonf.checkout.ready}">A vos marques</span> <a  id="dln" href="#" th:text="#{addonf.checkout.notloggued.download}" class="text-primary">Télécharger</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-gray border-top innerTB inner-2x">
+        <div class="container innerTB inner-2x">
+            <!-- Row -->
+            <div class="row">
+
+                <!-- Column -->
+                <div class="col-md-6">
+                </div>
+                <!-- Column END -->
+
+                <!-- Column -->
+                <div class="col-md-3">
+                </div>
+                <!-- // Column END -->
+
+                <div class="col-md-3">
+                    <div class="box-generic padding-none text-center">
+                        <!--<p class="lead margin-none strong innerAll border-bottom" th:utext="#{addonf.cart.total(${session.cart.minScore})}">Total: &euro;1,195.95</p>-->
+                        <div class="innerAll">
+                            <a th:href="@{/cart.html}" class="btn btn-block btn-primary" th:utext="#{addonf.checkout.goCart}"><i class="fa fa-fw fa-edit"></i> Change your order</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- // Row END -->
+        </div>
+    </div>
+
+    </div>
+</body>
+</html>

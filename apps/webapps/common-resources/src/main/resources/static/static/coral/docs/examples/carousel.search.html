@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>carousel.search example | CORAL Template (v1.9.6)</title>
+	
+	<!-- Meta -->
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+
+	<!-- 
+	**********************************************************
+	In development, use the LESS files and the less.js compiler
+	instead of the minified CSS loaded by default.
+	**********************************************************
+	-->
+
+		<!-- <link rel="stylesheet/less" href="../../assets/less/docs/module.examples.page.carousel.search.less" /> -->
+
+	<link rel="stylesheet" href="../../assets/css/docs/module.examples.page.carousel.search.min.css" />
+
+	
+	<script src="../../assets/components/library/jquery/jquery.min.js?v=v1.9.6&sv=v0.0.1"></script>
+<script src="../../assets/components/library/jquery/jquery-migrate.min.js?v=v1.9.6&sv=v0.0.1"></script>
+<script src="../../assets/components/library/modernizr/modernizr.js?v=v1.9.6&sv=v0.0.1"></script>
+<script src="../../assets/components/plugins/less-js/less.min.js?v=v1.9.6&sv=v0.0.1"></script>
+<script src="../../assets/components/modules/admin/charts/flot/assets/lib/excanvas.js?v=v1.9.6&sv=v0.0.1"></script>
+<script src="../../assets/components/plugins/browser/ie/ie.prototype.polyfill.js?v=v1.9.6&sv=v0.0.1"></script>
+</head>
+<body>
+
+	<div class="container">
+		<div class="innerTB">
+
+			<div class="jumbotron">
+				<h1 class="separator bottom">carousel.search example</h1>
+				<p class="lead">This is an example page that loads strictly the minimal core styles &amp; scripts required by <strong>CORAL</strong> and the <strong>carousel.search component</strong></p>
+			</div>
+<div id="realestate-carousel-search" class="carousel slide" data-ride="carousel">
+    <div class="search">
+        <div class="search-box">
+            <h3><i class="fa fa-fw icon-home-fill-1"></i> Real Estate Search</h3>
+            <div class="separator"></div>
+            <ul class="list-unstyled">
+                <li><a href="listing.html?lang=en" class="btn btn-primary"><i class="fa fa-fw icon-home-1"></i> For Rent</a></li>
+                <li><a href="listing.html?lang=en" class="btn">Sale</a></li>
+                <li><a href="listing.html?lang=en" class="btn">Sharing</a></li>
+                <li><a href="listing.html?lang=en" class="btn ">Comercial</a></li>
+            </ul>
+            <div class="input-group input-group-lg">
+                <input type="text" class="form-control" placeholder="Search by Address, Region or Title"/>
+                <span class="input-group-btn">
+                    <a href="listing.html?lang=en" class="btn btn-primary"><i class="fa fa-fw icon-search"></i></a>
+                </span>
+            </div>
+        </div>
+    </div>
+    <ol class="carousel-indicators">
+        <li data-target="#realestate-carousel-search" data-slide-to="0" class="active"></li>
+        <li data-target="#realestate-carousel-search" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item active" id="item1"></div>
+        <div class="item" id="item2"></div>
+    </div>
+</div>
+
+	
+		</div>
+	</div>
+
+	<!-- Global -->
+	<script>
+	var basePath = '',
+		rootPath = '../../',
+		DEV = false,
+		componentsPath = '../../assets/components/';
+	
+	var primaryColor = '#eb6a5a',
+		dangerColor = '#b55151',
+		successColor = '#609450',
+		warningColor = '#ab7a4b',
+		inverseColor = '#45484d';
+	
+	var themerPrimaryColor = primaryColor;
+	</script>
+
+	<script src="../../assets/components/library/bootstrap/js/bootstrap.min.js?v=v1.9.6&sv=v0.0.1"></script>
+</body>
+</html>

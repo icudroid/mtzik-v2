@@ -1,0 +1,73 @@
+ext {
+    springBootVersion = '1.2.2.RELEASE'
+
+    libs = [
+            springBoot: "org.springframework.boot:spring-boot-starter:${springBootVersion}",
+
+            //database
+            postgres: "org.postgresql:postgresql:9.3-1102-jdbc41",
+            queryDslApt: "com.mysema.querydsl:querydsl-apt:3.6.2",
+            queryDsl: "com.mysema.querydsl:querydsl-jpa:3.6.2",
+
+            //utilitaires
+            lombok: "org.projectlombok:lombok:1.16.2",
+
+            //commons
+            commonsIo: "commons-io:commons-io:2.4",
+            commonsLang: "commons-lang:commons-lang:2.6",
+            commonsBeanutils: "commons-beanutils:commons-beanutils:1.9.2",
+            commonsFileupload: 'commons-fileupload:commons-fileupload:1.3.1',
+
+
+            guava: 'com.google.guava:guava:18.0',
+
+            mail: 'javax.mail:mail:1.5.0-b01',
+
+            bouncycastle : 'org.bouncycastle:bcprov-jdk16:1.46',
+
+
+            libphonenumber : 'com.googlecode.libphonenumber:libphonenumber:7.0.3',
+
+            zip4j: 'net.lingala.zip4j:zip4j:1.3.2',
+
+            recaptcha4j: 'net.tanesha.recaptcha4j:recaptcha4j:0.0.7',
+
+            vtPassword: 'edu.vt.middleware:vt-password:3.1.2'
+    ]
+
+}
+
+
+allprojects  {
+    apply plugin: 'idea'
+    group = 'fr.k2i.adbeback.mtzik'
+    version = '0.0.1-SNAPSHOT'
+}
+
+subprojects {
+    apply plugin: 'java'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+
+    configurations {
+        provided
+    }
+
+    buildscript {
+        repositories {
+            mavenLocal()
+            maven { url "http://repo.maven.apache.org/maven2" }
+        }
+        dependencies {
+            classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        }
+    }
+
+    repositories {
+        mavenLocal()
+        maven { url "http://repo.maven.apache.org/maven2" }
+    }
+
+
+}

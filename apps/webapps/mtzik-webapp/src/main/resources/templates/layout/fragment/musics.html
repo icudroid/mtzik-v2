@@ -1,0 +1,63 @@
+<div th:if="${musics.getTotalElements() > 0}">
+    <div class="row" th:if="${showmore == false}">
+        <div class="col-md-8">
+            <h4 class="text-faded" th:utext="#{addonf.search.productors.musics(${musics.getTotalElements()})}">Musiques</h4>
+        </div>
+        <div class="col-md-4 text-right">
+            <span th:text="#{addonf.search.show.by}">Monter par :</span>
+            <select id="bySize">
+                <option value="20" th:selected="${musics.getSize()==20}">20</option>
+                <option value="50"  th:selected="${musics.getSize()==50}">50</option>
+                <option value="100"  th:selected="${musics.getSize()==100}">100</option>
+            </select>
+        </div>
+    </div>
+    <h4 th:if="${showmore == true}" class="text-faded" th:utext="#{addonf.search.productors.musics(${musics.getTotalElements()})}">Musiques</h4>
+
+    <table class="table table-bordered table-primary">
+        <tr>
+            <th th:utext="#{addonf.search.result.music.head.title}">Titre</th>
+            <th th:utext="#{addonf.search.result.music.head.artists}">Artists</th>
+            <th th:utext="#{addonf.search.result.music.head.productors}">Label</th>
+            <th th:utext="#{addonf.search.result.music.head.genre}">Genre</th>
+            <th th:utext="#{addonf.search.result.music.head.releaseDate}">Sortie le</th>
+            <th class="center" style="width: 90px;"></th>
+        </tr>
+        <tr th:each="music : ${musics.getContent()}">
+            <td>
+                <div class="media">
+                    <a th:href="@{/product.html(musicId=${music.id})}" class="media-object pull-left hidden-xs">
+                        <img width="50" height="50" style="width: 50px; height: 50px;" class="thumb"  th:src="@{${session.staticUrl}+'jacket/'+${music.jacket}}" alt="" />
+                    </a>
+                    <div class="media-body" style="padding-top:16px;">
+                        <h5 class="text-uppercase" th:utext="${music.title}">Product name goes here</h5>
+                    </div>
+                </div>
+            </td>
+            <td>
+                                        <span th:each="artist,iterStat : ${music.artists}">
+                                            <a th:href="@{/artistPage.html(artistId=${artist.id})}" th:utext="${artist.fullName}">TOTO</a>
+                                            <span th:if="${!iterStat.last}">, </span>
+                                        </span>
+            </td>
+            <td>
+                                        <span th:each="productor,iterStat : ${music.productors}">
+                                            <a th:href="@{/majorPage.html(majorId=${productor.id})}" th:utext="${productor.fullName}">EMI</a>
+                                            <span th:if="${!iterStat.last}">, </span>
+                                        </span>
+            </td>
+            <td>
+                                        <span th:each="genre,iterStat : ${music.categories}">
+                                            <span th:utext="#{'addonf.reference.genre.'+${genre.codeGenre}}"></span>
+                                            <span th:if="${!iterStat.last}">, </span>
+                                        </span>
+            </td>
+            <td th:with="df=#{date.format}" th:utext="${#dates.format(music.releaseDate,df)}">></td>
+            <td class="center">
+                <a href="#" class="btn btn-primary btn-circle pull-right addToCart" th:attr="data-music=${music.id}"><i class="fa fa-shopping-cart"></i></a>
+                <a href="#" class="btn btn-primary btn-circle pull-right playMusic" th:attr="data-music=${music.id}" style="margin-right: 2px;"><i class="fa fa fa-play"></i></a>
+            </td>
+        </tr>
+    </table>
+    <a th:if="${musics.hasNext() == true and showmore == true}" th:utext="#{addonf.search.result.more.music.result}" th:href="@{/search/music.html(req=${param.q})}">Voir plus de musiques</a>
+</div>

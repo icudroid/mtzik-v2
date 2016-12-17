@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout/home_layout"
+      ng-app="registrationApp">
+<head>
+    <title th:text="${title}">Enregistrement</title>
+
+    <script src="lib/angular-1.2.0/angular.js" th:src="@{/static/lib/angular-1.2.0/angular.js}"></script>
+    <script src="lib/angular-1.2.0/angular-animate.js" th:src="@{/static/lib/angular-1.2.0/angular-animate.js}"></script>
+    <script src="lib/angular-1.2.0/angular-resource.js" th:src="@{/static/lib/angular-1.2.0/angular-resource.js}"></script>
+    <script src="lib/angular-1.2.0/i18n/angular-locale_fr-fr.js" th:src="@{/static/lib/angular-1.2.0/i18n/angular-locale_fr-fr.js}"></script>
+    <script src="lib/angular-1.2.0/angular-route.js" th:src="@{/static/lib/angular-1.2.0/angular-route.js}"></script>
+
+    <script th:src="@{/static/lib/ui-bootstrap-0.10.0/ui-bootstrap-tpls-0.10.0.js}"></script>
+
+    <script src="js/controller/registration-controllers.js" th:src="@{/static/js/controller/registration-controllers.js}"></script>
+
+</head>
+
+
+<body>
+    <div layout:fragment="content"  ng-controller="registrationCtrl">
+
+    <script type="text/ng-template" id="cityTemplate.html">
+        <a>
+            {{match.model.zipcode}} {{match.model.city}}, {{match.model.country.code}}
+        </a>
+    </script>
+
+        <div class="container"><!-- row-app -->
+            <div class="row">
+
+                <!-- col -->
+
+
+                <!-- col-separator.box -->
+                <div class="col-separator col-unscrollable box">
+
+                    <!-- col-table -->
+                    <div class="col-table">
+
+                        <h4 class="innerAll margin-none border-bottom text-center bg-primary" th:utext="#{addonf.signup.title}"><i class="fa fa-pencil"></i> Create a new Account</h4>
+
+                        <!-- col-table-row -->
+                        <div class="col-table-row">
+
+                            <!-- col-app -->
+                            <div class="col-app col-unscrollable">
+
+                                <!-- col-app -->
+                                <div class="col-app animated fadeInDown">
+
+                                    <div class="login">
+
+                                        <!--<div class="placeholder text-center"><i class="fa fa-pencil"></i></div>-->
+
+                                        <div class="panel panel-default col-sm-6 col-sm-offset-3">
+
+                                            <div class="panel-body">
+                                                <form role="form" th:action="@{/signup}" method="post" th:object="${user}" autocomplete="off">
+                                                    <div class="form-group" th:class="${#fields.hasErrors('username')}? 'has-error form-group' :'form-group'" >
+                                                        <label for="pseudo" class="control-label">Pseudo</label>
+                                                        <input type="text" class="form-control" id="pseudo" placeholder="Votre pseudo" th:field="*{username}" ng-required="true"/>
+                                                        <p  class="help-block" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Incorrect</p>
+                                                    </div>
+
+                                                    <div class="form-group" th:class="${#fields.hasErrors('password')}? 'has-error form-group' :'form-group'" >
+                                                        <label for="passwd" class="control-label">Mot de passe</label>
+                                                         <input type="password" class="form-control" id="passwd" placeholder="Votre mot de passe" th:field="*{password}" ng-required="true"/>
+                                                        <p  class="help-block" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Incorrect</p>
+                                                    </div>
+
+
+                                                    <div class="form-group" th:class="${#fields.hasErrors('email')}? 'has-error form-group' :'form-group'" >
+                                                        <label for="email" class="control-label">Email</label>
+                                                         <input type="email" class="form-control" id="email" placeholder="Votre E-mail" th:field="*{email}" ng-required="true"/>
+                                                        <p  class="help-block" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Incorrect</p>
+                                                    </div>
+
+
+                                                    <div class="form-group" th:class="${#fields.hasErrors('birthday')}? 'has-error form-group' :'form-group'" >
+                                                        <label for="birthdate" class="control-label">Date de naissance</label>
+                                                        <input id="birthdate" type="text"
+                                                               datepicker-popup="{{format}}"
+                                                               ng-model="dt"
+                                                               is-open="opened"
+                                                               th:field="*{birthday}"
+                                                               ng-required="true"
+                                                               class="form-control"
+                                                               readonly="true"
+                                                                />
+                                                        <p  class="help-block" th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}">Incorrect</p>
+                                                    </div>
+
+
+                                                    <div class="form-group" th:class="${#fields.hasErrors('address')}? 'has-error form-group' :'form-group'">
+                                                        <label for="citySearch" class="control-label">Ville</label>
+                                                        <input type="hidden" th:field="*{address.city.id}" ng-value="city.id"/>
+                                                        <input id="citySearch" type="text" ng-model="city" placeholder="Choisir la ville" typeahead-template-url="cityTemplate.html" typeahead="city as city.label for city in getCitiesByName($viewValue)" typeahead-loading="loadingLocations" class="form-control" typeahead-min-length="2" typeahead-wait-ms="300" ng-required="true"/>
+                                                        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                                                        <p  class="help-block" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Incorrect</p>
+                                                    </div>
+
+
+
+
+                                                    <div class="form-group" th:class="${#fields.hasErrors('sex')}? 'has-error form-group' :'form-group'" >
+                                                        <label for="civility" class="control-label">Civilité</label>
+                                                            <select class="form-control" id="civility" th:field="*{sex}" ng-required="true">
+                                                                <option th:each="civility : ${civilities}" th:text="#{${civility}}" th:value="${civility}">...</option>
+                                                            </select>
+                                                        <p  class="help-block" th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}">Incorrect</p>
+                                                    </div>
+
+
+
+                                                    <button class="btn btn-primary btn-block" type="submit">S'enregistrer</button>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                        <div class="clearfix"></div>
+
+                                    </div>
+
+                                </div>
+                                <!-- // END col-app -->
+
+                            </div>
+                            <!-- // END col-app.col-unscrollable -->
+
+                        </div>
+                        <!-- // END col-table-row -->
+
+                    </div>
+                    <!-- // END col-table -->
+
+                </div>
+                <!-- // END col-separator.box -->
+
+
+            </div>
+            <!-- // END row-app -->
+
+
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="ie lt-ie9 lt-ie8 lt-ie7 footer-sticky navbar-sticky"> <![endif]-->
+<!--[if IE 7]>    <html class="ie lt-ie9 lt-ie8 footer-sticky navbar-sticky"> <![endif]-->
+<!--[if IE 8]>    <html class="ie lt-ie9 footer-sticky navbar-sticky"> <![endif]-->
+<!--[if gt IE 8]> <html class="ie footer-sticky navbar-sticky"> <![endif]-->
+<!--[if !IE]><!--><html class="footer-sticky navbar-sticky"><!-- <![endif]-->
+<head>
+	<title>CORAL Template (v1.9.6)</title>
+	
+	<!-- Meta -->
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	
+	<!-- 
+	**********************************************************
+	In development, use the LESS files and the less.js compiler
+	instead of the minified CSS loaded by default.
+	**********************************************************
+	<link rel="stylesheet/less" href="../assets/less/admin/module.admin.stylesheet-complete.layout_fixed.true.less" />
+	-->
+
+		<!--[if lt IE 9]><link rel="stylesheet" href="../assets/components/library/bootstrap/css/bootstrap.min.css" /><![endif]-->
+	<link rel="stylesheet" href="../assets/css/admin/module.admin.stylesheet-complete.layout_fixed.true.min.css" />
+	
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+	<script src="../assets/components/plugins/ajaxify/script.min.js?v=v1.9.6&sv=v0.0.1"></script>
+
+<script>var App = {};</script>
+
+<script data-id="App.Scripts">
+App.Scripts = {
+
+	/* CORE scripts always load first; */
+	core: [
+		'../assets/components/library/jquery/jquery.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/library/modernizr/modernizr.js?v=v1.9.6&sv=v0.0.1'
+	],
+
+	/* PLUGINS_DEPENDENCY always load after CORE but before PLUGINS; */
+	plugins_dependency: [
+		'../assets/components/library/bootstrap/js/bootstrap.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/library/jquery/jquery-migrate.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/modules/admin/maps/vector/assets/lib/jquery-jvectormap-1.2.2.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/modules/admin/charts/flot/assets/lib/jquery.flot.js?v=v1.9.6&sv=v0.0.1'
+	],
+
+	/* PLUGINS always load after CORE and PLUGINS_DEPENDENCY, but before the BUNDLE / initialization scripts; */
+	plugins: [
+		'../assets/components/plugins/nicescroll/jquery.nicescroll.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/plugins/breakpoints/breakpoints.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/plugins/ajaxify/davis.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/plugins/ajaxify/jquery.lazyjaxdavis.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/plugins/preload/pace/pace.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/modules/admin/charts/flot/assets/lib/jquery.flot.resize.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/modules/admin/charts/flot/assets/lib/plugins/jquery.flot.tooltip.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/modules/admin/charts/flot/assets/custom/js/flotcharts.common.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/modules/admin/charts/easy-pie/assets/lib/js/jquery.easy-pie-chart.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/modules/admin/charts/sparkline/jquery.sparkline.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/modules/admin/maps/vector/assets/lib/maps/jquery-jvectormap-world-mill-en.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/plugins/less-js/less.min.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/modules/admin/charts/flot/assets/lib/excanvas.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/plugins/browser/ie/ie.prototype.polyfill.js?v=v1.9.6&sv=v0.0.1'
+	],
+
+	/* The initialization scripts always load last and are automatically and dynamically loaded when AJAX navigation is enabled; */
+	bundle: [
+		'../assets/components/plugins/ajaxify/ajaxify.init.js?v=v1.9.6', 
+		'../assets/components/core/js/preload.pace.init.js?v=v1.9.6', 
+		'../assets/components/modules/admin/charts/flot/assets/custom/js/flotchart-line-2.init.js?v=v1.9.6', 
+		'../assets/components/modules/admin/charts/flot/assets/custom/js/flotchart-bars-horizontal.init.js?v=v1.9.6', 
+		'../assets/components/modules/admin/charts/flot/assets/custom/js/flotchart-mixed-1.init.js?v=v1.9.6', 
+		'../assets/components/modules/admin/charts/easy-pie/assets/custom/easy-pie.init.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/modules/admin/charts/sparkline/sparkline.init.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/modules/admin/maps/vector/assets/custom/maps-vector.world-map-markers.init.js?v=v1.9.6&sv=v0.0.1', 
+		'../assets/components/core/js/core.init.js?v=v1.9.6', 
+		'../assets/components/core/js/animations.init.js?v=v1.9.6'
+	]
+
+};
+</script>
+
+<script>
+$script(App.Scripts.core, 'core');
+
+$script.ready(['core'], function(){
+	$script(App.Scripts.plugins_dependency, 'plugins_dependency');
+});
+$script.ready(['core', 'plugins_dependency'], function(){
+	$script(App.Scripts.plugins, 'plugins');
+});
+$script.ready(['core', 'plugins_dependency', 'plugins'], function(){
+	$script(App.Scripts.bundle, 'bundle');
+});
+</script>
+	<script>if (/*@cc_on!@*/false && document.documentMode === 10) { document.documentElement.className+=' ie ie10'; }</script>
+	
+</head>
+<body class="scripts-async menu-right-hidden">
+	
+	<!-- Main Container Fluid -->
+	<div class="container-fluid menu-hidden">
+
+		
+				
+		<!-- Content -->
+		<div id="content">
+
+						
+				<div class="navbar hidden-print main navbar-default" role="navigation">
+	<div class="container">
+
+		<div class="navbar-header">
+          	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            	<span class="sr-only">Toggle navigation</span>
+            	<span class="icon-bar"></span>
+            	<span class="icon-bar"></span>
+            	<span class="icon-bar"></span>
+          	</button>
+
+          	<a id="logo" href="index.html?lang=en" class="animated fadeInDown pull-left"><img src="../assets/images/logo/app-logo-style-default.png" alt="" class="img-clean" width="37"></a>
+        </div>
+
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li class="dropdown dropdown-light active">
+					<a href="" data-toggle="dropdown" class="dropdown-toggle">Admin <span class="caret"></span></a>
+					<ul class="dropdown-menu pull-left">
+						<li class="dropdown dropdown-light dropdown-submenu active">
+							<a href="dashboard_analytics.html?lang=en" class="glyphicons dashboard"><i></i><span>Dashboard</span></a>
+							<ul class="dropdown-menu">
+								<li class="active"><a href="dashboard_analytics.html?lang=en"><i class="fa fa-bar-chart-o"></i><span>Analytics</span></a></li>
+								<li><a href="dashboard_users.html?lang=en"><i class="fa fa-user"></i><span>Users</span></a></li>
+								<li><a href="dashboard_overview.html?lang=en"><i class="fa fa-dashboard"></i><span>Overview</span></a></li>
+							</ul>
+						</li>
+						<li class="dropdown dropdown-light dropdown-submenu">
+							<a href="index.html?lang=en" class="glyphicons globe"><i></i><span>Social</span></a>
+							<ul class="dropdown-menu">
+								<li><a href="index.html?lang=en" class="glyphicons cardio"><i></i><span>Activity</span></a></li>
+								<li><a href="social_account.html?lang=en" class="glyphicons user"><i></i><span>Account</span></a></li>
+								<li><a href="social_messages.html?lang=en"><i class="fa fa-comments-o"></i><span>Messages</span></a></li>
+								<li><a href="social_friends.html?lang=en"><i class="fa fa-group"></i><span>Friends</span></a></li>
+								<li><a href="email.html?lang=en"><span class="badge pull-right badge-inverse">30</span><i class="fa fa-envelope"></i><span>Inbox</span></a></li>
+								<li><a href="social.html?lang=en"><i class="fa fa-folder"></i><span>Widgets</span></a></li>
+								<li><a href="timeline.html?lang=en"><i class="fa fa-clock-o"></i><span>Timelines</span></a></li>
+								<li><a href="contacts_2.html?lang=en" class="glyphicons iphone"><i></i><span>Contacts #2</span></a></li>
+								<li><a href="contacts.html?lang=en" class="glyphicons iphone"><i></i><span>Contacts #1</span></a></li>
+								<li><a href="ratings.html?lang=en" class="glyphicons star"><i></i><span>Ratings</span></a></li>
+							</ul>
+						</li>
+
+						<li class="dropdown dropdown-light dropdown-submenu">
+							<a href="realestate_listing_map.html?lang=en"><i class="fa fa-home"></i><span>Real Estate</span></a>
+							<ul class="dropdown-menu">
+								<li><a href="realestate_listing_map.html?lang=en"><i class="fa fa-map-marker"></i><span>Property map</span> &nbsp; <span class="label label-primary">new</span></a></li>
+								<li><a href="realestate_listing_grid.html?lang=en"><i class="fa fa-th"></i><span>Property grid</span></a></li>
+								<li><a href="realestate_listing_list.html?lang=en"><i class="fa fa-list"></i><span>Property list</span></a></li>
+								<li><a href="realestate_property.html?lang=en"><i class="fa fa-info"></i><span>Property details</span></a></li>
+								<li><a href="realestate_compare.html?lang=en"><i class="fa icon-scale-2"></i><span>Property compare</span></a></li>
+								<li><a href="realestate_property_edit.html?lang=en"><i class="fa fa-edit"></i><span>Property edit</span></a></li>
+							</ul>
+						</li>
+
+						<li class="dropdown dropdown-light dropdown-submenu">
+							<a href="maps_vector.html?lang=en" class="glyphicons google_maps"><i></i><span>Maps</span></a>
+							<ul class="dropdown-menu">
+								<li><a href="maps_vector.html?lang=en" class="glyphicons google_maps"><i></i><span>Vector Maps</span></a></li>
+								<li><a href="maps_google.html?lang=en" class="glyphicons google_maps"><i></i><span>Google Maps</span></a></li>
+							</ul>
+						</li>
+
+						<li><a href="events.html?lang=en"><i class="fa fa-ticket"></i><span>Events</span></a></li>
+
+						<li class="dropdown dropdown-light dropdown-submenu">
+							<a href="news.html?lang=en" class="glyphicons notes"><i></i> Content</a>
+							<ul class="dropdown-menu">
+								<li><a href="news.html?lang=en"><i class="fa fa-file-text"></i><span>News</span></a></li>
+								<li><a href="stories.html?lang=en"><i class="fa fa-file-text-o"></i><span>Stories</span></a></li>
+								<li><a href="search.html?lang=en"><i class="fa fa-search"></i><span>Search</span></a></li>
+								<li><a href="faq.html?lang=en"><i class="fa fa-question-circle"></i><span>FAQ</span></a></li>
+							</ul>
+						</li>
+
+						<li class="dropdown dropdown-light dropdown-submenu">
+							<a href="gallery_video.html?lang=en" class="glyphicons picture"><i></i><span>Media</span></a>
+							<ul class="dropdown-menu">
+								<li><a href="gallery_video.html?lang=en"><i class="fa fa-video-camera"></i><span>Video Gallery</span></a></li>
+								<li><a href="gallery_photo.html?lang=en"><i class="fa fa-camera"></i><span>Photo Gallery</span></a></li>
+							</ul>
+						</li>
+
+						<li><a href="tasks.html?lang=en" class="glyphicons share_alt"><i></i><span>Tasks</span></a></li>
+
+						<li class="dropdown dropdown-light dropdown-submenu">
+							<a href="support_tickets.html?lang=en" class="glyphicons life_preserver"><i></i><span>Support</span></a>
+							<ul class="dropdown-menu">
+								<li><a href="support_tickets.html?lang=en"><i class="fa fa-ticket"></i><span>Tickets</span></a></li>
+								<li><a href="support_forum_overview.html?lang=en"><i class="fa fa-folder-o"></i> Forums Home</a></li>
+								<li><a href="support_forum_post.html?lang=en"><i class="fa fa-folder-o"></i> Forums Post</a></li>
+								<li><a href="support_kb.html?lang=en"><i class="fa fa-file-text-o"></i><span>Knowledge Base</span></a></li>
+								<li><a href="support_questions.html?lang=en"><i class="fa fa-question"></i><span>Questions</span></a></li>
+								<li><a href="support_answers.html?lang=en"><i class="fa fa-info"></i><span>Answers</span></a></li>
+							</ul>
+						</li>
+
+						<li class="dropdown dropdown-light dropdown-submenu">
+							<a href="medical_overview.html?lang=en" class="glyphicons circle_plus"><i></i><span>Medical</span></a>
+							<ul class="dropdown-menu">
+								<li class="">
+									<a href="medical_overview.html?lang=en"><i class="fa fa-medkit"></i><span>Overview</span></a>
+								</li>
+								<li class="">
+									<a href="medical_patients.html?lang=en"><span class="badge pull-right badge-primary">2</span><i class="fa fa-user-md"></i><span>Patients</span></a>
+								</li>
+								<li class="">
+									<a href="medical_appointments.html?lang=en"><i class="fa fa-stethoscope"></i><span>Appointments</span></a>
+								</li>
+								<li class="">
+									<a href="medical_memos.html?lang=en"><i class="fa fa-file-text-o"></i><span>Memos</span></a>
+								</li>
+								<li class="border-bottom-none">
+									<a href="medical_metrics.html?lang=en"><i class="fa fa-bar-chart-o"></i><span>Metrics</span></a>
+								</li>
+							</ul>
+						</li>
+
+						<li class="dropdown dropdown-light dropdown-submenu">
+							<a href="courses_2.html?lang=en" class="glyphicons crown"><i></i> Learning</a>
+							<ul class="dropdown-menu">
+								<li class=""><a href="courses_2.html?lang=en"><i class="fa fa-book"></i><span>Courses Home #1</span></a></li>
+								<li class=""><a href="courses.html?lang=en"><i class="fa fa-book"></i><span>Courses Home #2</span></a></li>
+								<li class=""><a href="courses_listing.html?lang=en"><i class="fa fa-book"></i><span>Courses Listing</span></a></li>
+								<li class=""><a href="course.html?lang=en"><i class="fa fa-book"></i><span>Course page</span></a></li>
+							</ul>
+						</li>
+
+						<li class="dropdown dropdown-light dropdown-submenu">
+							<a href="finances.html?lang=en" class="glyphicons calculator"><i></i> Finance</a>
+							<ul class="dropdown-menu">
+								<li><a href="finances.html?lang=en"><i class="fa fa-legal"></i><span>Finances</span></a></li>
+								<li><a href="invoice.html?lang=en"><i class="fa fa-file-text-o"></i><span>Invoice</span></a></li>
+								<li><a href="bookings.html?lang=en"><i class="fa fa-ticket"></i><span>Bookings</span></a></li>
+							</ul>
+						</li>
+
+						<li><a href="shop_products.html?lang=en" class="glyphicons shopping_cart"><i></i><span>Shop</span></a></li>
+
+						<li class="dropdown dropdown-light dropdown-submenu">
+							<a href="survey.html?lang=en" class="glyphicons turtle"><i></i><span>Surveys</span></a>
+							<ul class="dropdown-menu">
+								<li><a href="survey.html?lang=en"><i class="fa fa-check"></i><span>Single</span></a></li>
+								<li><a href="survey_multiple.html?lang=en"><i class="fa fa-windows"></i><span>Multiple</span></a></li>
+							</ul>
+						</li>
+
+						<li class="dropdown dropdown-light dropdown-submenu">
+							<a href="profile_resume.html?lang=en" class="glyphicons plus"><i></i><span>Other</span></a>
+							<ul class="dropdown-menu dropdown-menu-bottom">
+								<li><a href="profile_resume.html?lang=en"><i class="fa fa-download"></i>Profile / CV</a></li>
+								<li><a href="login.html?lang=en"><i class="fa fa-lock"></i><span>Login</span></a></li>
+								<li><a href="signup.html?lang=en"><i class="fa fa-pencil"></i>Signup</a></li>
+								<li><a href="landing.html?lang=en"><i class="fa fa-share"></i><span>Landing</span></a></li>
+								<li><a href="employees.html?lang=en" class="glyphicons group"><i></i><span>Employees</span></a></li>
+								<li><a href="error.html?lang=en" class="glyphicons warning_sign"><i></i><span>Error</span></a></li>
+								<li><a href="ui.html?lang=en" class="glyphicons adjust_alt"><i></i><span>Elements</span></a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li class="dropdown dropdown-light">
+					<a href="" data-toggle="dropdown" class="dropdown-toggle">Website <span class="caret"></span></a>
+					<ul class="dropdown-menu pull-left">
+						<li><a href="../front/index.html?lang=en" class="glyphicons show_big_thumbnails" target="_blank"><i></i><span>Multi Purpose</span></a></li>
+						<li><a href="../shop/index.html?lang=en" class="glyphicons shopping_cart" target="_blank"><i></i><span>Online Shop</span></a></li>
+						<li><a href="../realestate/index.html?lang=en" class="glyphicons home" target="_blank"><i></i><span>Real Estate</span></a></li>
+					</ul>
+				</li>
+			</ul>
+
+		  	<div class="user-action visible-xs user-action-btn-navbar pull-right">
+				<button class="btn btn-sm btn-navbar-right btn-primary btn-stroke"><i class="fa fa-fw fa-arrow-right"></i><span class="menu-left-hidden-xs"> Modules</span></button>
+			</div>
+
+			<div class="col-md-3 visible-md visible-lg pull-right padding-none">
+		    	<div class="input-group">
+		      		<input type="text" class="form-control input-sm" placeholder="Search stories ...">
+		      		<span class="input-group-btn">
+		        		<button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+		      		</span>
+		    	</div><!-- /input-group -->
+		  	</div>
+
+		  	<div class="user-action pull-right menu-right-hidden-xs menu-left-hidden-xs hidden-xs">
+				<div class="dropdown dropdown-icons padding-none">
+					<a data-toggle="dropdown" href="#" class="btn btn-primary btn-circle dropdown-toggle"><i class="fa fa-user"></i> </a>
+					<ul class="dropdown-menu">
+						<li data-toggle="tooltip" data-title="Photo Gallery" data-placement="left" data-container="body"><a href="gallery_photo.html?lang=en"><i class="fa fa-camera"></i></a></li>
+						<li data-toggle="tooltip" data-title="Tasks" data-placement="left" data-container="body"><a href="tasks.html?lang=en"><i class="fa fa-code-fork"></i></a></li>
+						<li data-toggle="tooltip" data-title="Employees" data-placement="left" data-container="body"><a href="employees.html?lang=en"><i class="fa fa-group"></i></a></li>
+						<li data-toggle="tooltip" data-title="Contacts" data-placement="left" data-container="body"><a href="contacts_2.html?lang=en"><i class="fa fa-phone-square"></i></a></li>
+					</ul>
+				</div>
+			</div>
+
+			<ul class="notifications pull-right hidden-xs">
+				<li class="dropdown notif">
+					<a href="" class="dropdown-toggle"  data-toggle="dropdown"><i class="notif-block fa fa-comments-o"></i><span class="badge badge-primary">7</span></a>
+					<ul class="dropdown-menu chat media-list">
+						<li class="media">
+					        <a class="pull-left" href="#"><img class="media-object thumb" src="../assets/images/people/100/15.jpg" alt="50x50" width="50"/></a>
+							<div class="media-body">
+					        	<span class="label label-default pull-right">5 min</span>
+					            <h5 class="media-heading">Adrian D.</h5>
+					            <p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					        </div>
+						</li>
+				      	<li class="media">
+				          	<a class="pull-left" href="#"><img class="media-object thumb" src="../assets/images/people/100/16.jpg" alt="50x50" width="50"/></a>
+							<div class="media-body">
+					          	<span class="label label-default pull-right">2 days</span>
+					            <h5 class="media-heading">Jane B.</h5>
+					            <p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					        </div>
+				        </li>
+					    <li class="media">
+				          	<a class="pull-left" href="#"><img class="media-object thumb" src="../assets/images/people/100/17.jpg" alt="50x50" width="50"/></a>
+					      	<div class="media-body">
+								<span class="label label-default pull-right">3 days</span>
+					            <h5 class="media-heading">Andrew M.</h5>
+					            <p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					        </div>
+				        </li>
+				        <li><a href="#" class="btn btn-primary"><i class="fa fa-list"></i> <span>View all messages</span></a></li>
+			      	</ul>
+				</li>
+			</ul>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+<!-- // END navbar -->
+
+
+
+						
+			<div id="menu-top" class="menu-top-inverse">
+	<div class="container">	<ul class="main pull-left">
+		<li class="dropdown">
+			<a data-toggle="dropdown" class="dropdown-toggle" href=""><i class="fa fa-fw fa-cog"></i> Layout <span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li class="active"><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true" class="no-ajaxify">Fixed Layout with Top menu</a></li>
+				<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=false" class="no-ajaxify">Fluid Layout with Sidebars</a></li>
+				<li><a href="layout/layout-fixed-menu-top.html?lang=en" class="no-ajaxify">Layout examples</a></li>
+		    </ul>
+		</li>
+		<li class="dropdown">
+			<a data-toggle="dropdown" class="dropdown-toggle" href=""><i class="fa fa-fw fa-suitcase"></i> UI KIT <span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li><a href="ui.html?lang=en">UI Elements</a></li>
+				<li><a href="icons.html?lang=en">Icons</a></li>
+				<li><a href="typography.html?lang=en">Typography</a></li>
+				<li><a href="widgets.html?lang=en">Widgets</a></li>
+				<li><a href="calendar.html?lang=en">Calendar</a></li>
+				<li><a href="tabs.html?lang=en">Tabs</a></li>
+				<li><a href="sliders.html?lang=en">Sliders</a></li>
+				<li><a href="charts.html?lang=en">Charts</a></li>
+				<li><a href="grid.html?lang=en">Grid</a></li>
+				<li><a href="notifications.html?lang=en">Notifications</a></li>
+				<li><a href="modals.html?lang=en">Modals</a></li>
+				<li><a href="thumbnails.html?lang=en">Thumbnails</a></li>
+				<li><a href="carousels.html?lang=en">Carousels</a></li>
+				<li><a href="image_crop.html?lang=en">Image Cropping</a></li>
+				<li><a href="twitter.html?lang=en">Twitter API</a></li>
+				<li><a href="infinite_scroll.html?lang=en">Infinite Scroll</a></li>
+		    </ul>
+		</li>
+		<li class="dropdown">
+			<a data-toggle="dropdown" class="dropdown-toggle" href=""><i class="fa fa-fw fa-check-square-o"></i> Forms <span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li><a href="form_wizards.html?lang=en">Form Wizards</a></li>
+				<li><a href="form_elements.html?lang=en">Form Elements</a></li>
+				<li><a href="form_validator.html?lang=en">Form Validator</a></li>
+				<li><a href="file_managers.html?lang=en">File Managers</a></li>
+		    </ul>
+		</li>
+		<li class="dropdown hidden-xs">
+			<a data-toggle="dropdown" class="dropdown-toggle" href=""><i class="fa fa-fw fa-table"></i> Tables <span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li><a href="tables.html?lang=en">Tables</a></li>
+				<li><a href="tables_responsive.html?lang=en">Responsive Tables</a></li>
+				<li><a href="pricing_tables.html?lang=en">Pricing Tables</a></li>
+		    </ul>
+		</li>
+	</ul>
+	<ul class="main pull-right visible-lg">
+		<li><a href="">Close <i class="fa fa-fw fa-times"></i></a></li>
+	</ul>
+	<ul class="colors pull-right hidden-xs">
+		
+				<li class="active"><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=style-default" style="background-color: #eb6a5a" class="no-ajaxify"><span class="hide">style-default</span></a></li>
+				<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=green" style="background-color: #87c844" class="no-ajaxify"><span class="hide">green</span></a></li>
+				<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=coral" style="background-color: #7eccc2" class="no-ajaxify"><span class="hide">coral</span></a></li>
+		
+		<li class="dropdown">
+			<a href="" data-toggle="dropdown" class="dropdown-toggle">
+				<span class="color inverse"></span>
+				<span class="color danger"></span>
+				<span class="color success"></span>
+				<span class="color info"></span>
+			</a>
+			<ul class="dropdown-menu pull-right">
+								<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=alizarin-crimson" class="no-ajaxify"><span class="color" style="background-color: #F06F6F"></span> alizarin-crimson</a></li>
+								<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=blue-gray" class="no-ajaxify"><span class="color" style="background-color: #7293CF"></span> blue-gray</a></li>
+								<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=brown" class="no-ajaxify"><span class="color" style="background-color: #d39174"></span> brown</a></li>
+								<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=purple-gray" class="no-ajaxify"><span class="color" style="background-color: #AF86B9"></span> purple-gray</a></li>
+								<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=purple-wine" class="no-ajaxify"><span class="color" style="background-color: #CC6788"></span> purple-wine</a></li>
+								<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=green-army" class="no-ajaxify"><span class="color" style="background-color: #9FB478"></span> green-army</a></li>
+								<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=black-and-white" class="no-ajaxify"><span class="color" style="background-color: #979797"></span> black-and-white</a></li>
+								<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=amazon" class="no-ajaxify"><span class="color" style="background-color: #8BC4B9"></span> amazon</a></li>
+								<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=amber" class="no-ajaxify"><span class="color" style="background-color: #CACA8A"></span> amber</a></li>
+								<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=android-green" class="no-ajaxify"><span class="color" style="background-color: #A9C784"></span> android-green</a></li>
+								<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=antique-brass" class="no-ajaxify"><span class="color" style="background-color: #B3998A"></span> antique-brass</a></li>
+								<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=antique-bronze" class="no-ajaxify"><span class="color" style="background-color: #8D8D6E"></span> antique-bronze</a></li>
+								<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=artichoke" class="no-ajaxify"><span class="color" style="background-color: #B0B69D"></span> artichoke</a></li>
+								<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=atomic-tangerine" class="no-ajaxify"><span class="color" style="background-color: #F19B69"></span> atomic-tangerine</a></li>
+								<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=bazaar" class="no-ajaxify"><span class="color" style="background-color: #98777B"></span> bazaar</a></li>
+								<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=bistre-brown" class="no-ajaxify"><span class="color" style="background-color: #C3A961"></span> bistre-brown</a></li>
+								<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=bittersweet" class="no-ajaxify"><span class="color" style="background-color: #d6725e"></span> bittersweet</a></li>
+								<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=blueberry" class="no-ajaxify"><span class="color" style="background-color: #7789D1"></span> blueberry</a></li>
+								<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=bud-green" class="no-ajaxify"><span class="color" style="background-color: #6fa362"></span> bud-green</a></li>
+								<li><a href="?module=admin&page=dashboard_analytics&url_rewrite=&build=&v=v1.9.6&layout_fixed=true&skin=burnt-sienna" class="no-ajaxify"><span class="color" style="background-color: #E4968A"></span> burnt-sienna</a></li>
+							</ul>
+		</li>
+	</ul>
+	</div></div>
+
+
+			<div class="layout-app">
+
+			<div class="container"><div class="row row-app">
+	<div class="col-md-12">
+		<div class="col-separator col-separator-first col-unscrollable bg-none">
+			<div class="col-table">
+				
+				<div class="innerTB">
+					<h3 class="margin-none pull-left">Dashboard Analytics &nbsp;<i class="fa fa-fw fa-pencil text-muted"></i></h3>
+					<div class="btn-group pull-right">
+						<a href="dashboard_analytics.html?lang=en" class="btn btn-primary"><i class="fa fa-fw fa-bar-chart-o"></i> Analytics</a>
+						<a href="dashboard_users.html?lang=en" class="btn btn-default"><i class="fa fa-fw fa-user"></i> Users</a>
+						<a href="dashboard_overview.html?lang=en" class="btn btn-default"><i class="fa fa-fw fa-dashboard"></i> Overview</a>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				
+				<div class="col-separator-h"></div>
+				
+				<div class="row">
+					<div class="col-md-8">
+						<div class="box-generic padding-none overflow-hidden">
+							<div class="row row-merge border-bottom">
+								<div class="col-md-6">
+									<div class="innerAll inner-2x text-center">
+										<h5>Gross Revenue</h5>
+										<h4 class="text-medium text-primary text-condensed">10,201.00</h4>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="innerAll inner-2x text-center">
+										<h5>Net Revenue</h5>
+										<h4 class="text-medium text-primary text-condensed">8,812.40</h4>
+									</div>
+								</div>
+							</div>
+							<div class="innerAll inner-2x bg-gray">
+								<!-- Chart with lines and fill with no points -->
+<div id="chart_lines_fill_nopoints_2" class="flotchart-holder"></div>
+
+
+
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+
+								<div class="box-generic innerAll inner-2x text-center">
+									<h4>Overall Performance</h4>
+									<p class="innerTB inner-2x text-xlarge text-condensed strong text-primary">+281</p>
+									<div class="sparkline" sparkHeight="62">0:10,7:3,5:5,6:4,3:7,7:3,5:5,6:4,2:8,3:7,7:3,5:5,0:10</div>
+								</div>
+
+							</div>
+							<div class="col-md-6">
+								
+								<div class="widget widget-tabs widget-tabs-double-2 border-bottom widget-tabs-responsive">
+	
+									<div class="widget-body">
+										<div class="tab-content">
+										
+											<!-- Tab content -->
+											<div id="tabReports" class="tab-pane active widget-body-regular innerAll inner-2x text-center">
+												
+												<div data-percent="85" data-size="114" class="easy-pie inline-block easy-pie-gender primary" data-scale-color="false" data-track-color="#efefef" data-line-width="8">
+													<div class="value text-center">
+														<span class="strong"><i class="icon-graph-up-1 fa-3x text-primary"></i></span>
+													</div>
+												</div>
+
+											</div>
+											<!-- // Tab content END -->
+										
+											<!-- Tab content -->
+											<div id="tabIncome" class="tab-pane widget-body-regular innerAll inner-2x text-center">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, omnis minus voluptatibus assumenda sint autem dolorum. Rem, cupiditate, sed, optio est cumque repudiandae quo natus dignissimos praesentium alias nihil aspernatur?
+											</div>
+											<!-- // Tab content END -->
+
+											<!-- Tab content -->
+											<div id="tabAccounts" class="tab-pane widget-body-regular innerAll inner-2x text-center">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic qui natus deserunt atque quae laborum. Porro, eveniet, voluptatem, obcaecati quisquam tempore architecto nostrum quis eius corrupti ea non facilis quidem.
+											</div>
+											<!-- // Tab content END -->
+											
+										</div>
+									</div>
+
+									<!-- Tabs Heading -->
+									<div class="widget-head border-top-none bg-gray">
+										<ul>
+											<li class="active"><a class="glyphicons notes" href="#tabReports" data-toggle="tab"><i></i><span>Reports</span></a></li>
+											<li><a class="glyphicons credit_card" href="#tabIncome" data-toggle="tab"><i></i><span>Income</span></a></li>
+											<li><a class="glyphicons user" href="#tabAccounts" data-toggle="tab"><i></i><span>Accounts</span></a></li>
+										</ul>
+									</div>
+									<!-- // Tabs Heading END -->
+
+								</div>
+								
+							</div>
+						</div>
+						<div class="box-generic padding-none overflow-hidden">
+							<h4 class="bg-gray innerAll border-bottom margin-none"><i class="fa fa-fw icon-wallet"></i> Sales Volume</h4>
+							<div class="innerAll inner-2x">
+								<!-- Horizontal Bars Chart -->
+<div id="chart_horizontal_bars" class="flotchart-holder"></div>
+
+
+
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="box-generic padding-none overflow-hidden">
+									<div class="bg-primary text-center innerAll inner-2x">
+										<div class="innerTB">
+											<h4 class="innerB text-white">Today's Weather</h4>
+											<div class="strong text-xlarge">
+												<i class="fa fa-cloud"></i> 26<sup>&deg;</sup>
+											</div>
+										</div>
+									</div>
+									<div class="row row-merge">
+										<div class="col-md-6">
+											<div class="text-center innerAll inner-2x">
+												<p class="margin-none"><i class="fa icon-wind-speed-censor fa-2x"></i></p>
+												<p class="lead margin-none strong">15 m/h</p>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="text-center innerAll inner-2x">
+												<p class="margin-none"><i class="fa icon-water fa-2x"></i></p>
+												<p class="lead margin-none strong">40%</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="box-generic bg-gray overflow-hidden">
+									<!-- Chart with lines and fill with no points -->
+<div id="chart_mixed_1" class="flotchart-holder" style="height: 182px"></div>
+
+
+
+
+								</div>
+							</div>
+						</div>
+						<div class="widget">
+														<div class="widget-head">
+								<h4 class="heading">Trends</h4>
+							</div>
+							<div class="widget-body innerAll inner-2x">
+								<table class="table table-striped margin-none">
+									<thead>
+										<tr>
+											<th>Box office</th>
+											<th class="text-center">Cash</th>
+											<th class="text-right" style="width: 100px;">Trend</th>
+										</tr>
+									</thead>
+									<tbody>
+																														<tr>
+											<td><strong>1.</strong> Frozen</td>
+											<td class="text-center">&euro;8,718,939</td>
+											<td class="text-right">
+												<div class="sparkline" style="width: 100px;" sparkHeight="20" sparkType="line" sparkWidth="100%" sparkLineWidth="2" sparkLineColor="#eb6a5a" sparkFillColor="" data-data="[398,273,281,366,305,373,330,285,374,118]">
+												</div>
+											</td>
+										</tr>
+																													<tr>
+											<td><strong>2.</strong> The Hobbit 2</td>
+											<td class="text-center">&euro;7,800,000</td>
+											<td class="text-right">
+												<div class="sparkline" style="width: 100px;" sparkHeight="20" sparkType="line" sparkWidth="100%" sparkLineWidth="2" sparkLineColor="#eb6a5a" sparkFillColor="" data-data="[257,294,254,364,332,433,191,500,398,216]">
+												</div>
+											</td>
+										</tr>
+																													<tr>
+											<td><strong>3.</strong> The Wolf of Wall Street</td>
+											<td class="text-center">&euro;5,671,036</td>
+											<td class="text-right">
+												<div class="sparkline" style="width: 100px;" sparkHeight="20" sparkType="line" sparkWidth="100%" sparkLineWidth="2" sparkLineColor="#eb6a5a" sparkFillColor="" data-data="[390,342,404,424,453,378,262,419,149,377]">
+												</div>
+											</td>
+										</tr>
+																													<tr>
+											<td><strong>4.</strong> Iron Man 3</td>
+											<td class="text-center">&euro;409,013,994</td>
+											<td class="text-right">
+												<div class="sparkline" style="width: 100px;" sparkHeight="20" sparkType="line" sparkWidth="100%" sparkLineWidth="2" sparkLineColor="#eb6a5a" sparkFillColor="" data-data="[428,295,440,397,411,428,129,350,268,310]">
+												</div>
+											</td>
+										</tr>
+																													<tr>
+											<td><strong>5.</strong> Catching Fire</td>
+											<td class="text-center">&euro;398,327,026</td>
+											<td class="text-right">
+												<div class="sparkline" style="width: 100px;" sparkHeight="20" sparkType="line" sparkWidth="100%" sparkLineWidth="2" sparkLineColor="#eb6a5a" sparkFillColor="" data-data="[379,270,303,233,268,419,108,317,465,103]">
+												</div>
+											</td>
+										</tr>
+																													<tr>
+											<td><strong>6.</strong> Despicable Me 2</td>
+											<td class="text-center">&euro;367,835,345</td>
+											<td class="text-right">
+												<div class="sparkline" style="width: 100px;" sparkHeight="20" sparkType="line" sparkWidth="100%" sparkLineWidth="2" sparkLineColor="#eb6a5a" sparkFillColor="" data-data="[460,444,411,264,414,270,305,472,320,243]">
+												</div>
+											</td>
+										</tr>
+																		</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="box-generic bg-info innerAll inner-2x">
+							<div class="text-large pull-right">&euro;1000</div>
+							<h4 class="text-white text-medium margin-none">Earnings</h4>
+							<h5 class="text-white">Today's earnings</h5>
+							<div class="separator"></div>
+							<div class="progress progress-mini bg-info-dark margin-none">
+								<div class="progress-bar bg-white" style="width: 70%;"></div>
+							</div>
+						</div>
+						<div class="box-generic padding-none overflow-hidden">
+							<div class="row row-merge">
+								<div class="col-md-4 bg-gray">
+									<div class="innerAll inner-2x text-center">
+										<div class="sparkline" sparkHeight="65" data-colors="#cacaca, #4a8bc2,#609450,#cacaca">1,4,3,8</div>
+									</div>
+								</div>
+								<div class="col-md-8">
+									<div class="innerAll">
+										<ul class="list-unstyled">
+											<li class="innerAll half"><i class="fa fa-fw fa-square text-info"></i> <span class="strong">5,931</span> Visits</li>
+											<li class="innerAll half"><i class="fa fa-fw fa-square text-success"></i> <span class="strong">402</span> Conversions</li>
+											<li class="innerAll half"><i class="fa fa-fw fa-square text-muted"></i> <span class="strong">15,120</span> Pageviews</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box-generic padding-none">
+							<h4 class="strong border-bottom innerAll margin-none"><i class="fa fa-fw icon-worldwide"></i> Demographic</h4>
+							<div class="bg-gray border-bottom text-center">
+								<div id="world-map-markers" style="height: 200px"></div>
+							</div>
+							<ul class="list-unstyled">
+								<li class="innerAll border-bottom"><div class="pull-right strong">1249</div><i class="fa fa-fw fa-circle text-info"></i> Miami</li>
+								<li class="innerAll border-bottom"><div class="pull-right strong">892</div><i class="fa fa-fw fa-circle text-success"></i> Chicago</li>
+								<li class="innerAll border-bottom"><div class="pull-right strong">530</div><i class="fa fa-fw fa-circle text-primary"></i> Michigan</li>
+								<li class="innerAll"><div class="pull-right strong">380</div><i class="fa fa-fw fa-circle"></i> Boston</li>
+							</ul>
+						</div>
+						<div class="box-generic padding-none overflow-hidden">
+							<div class="heading-buttons innerR half border-bottom bg-primary">
+								<div class="btn-group btn-group-sm pull-right">
+									<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Day <span class="caret"></span></button>
+									<ul class="dropdown-menu" role="menu">
+								    	<li><a href="#">Day</a></li>
+								    	<li><a href="#">Week</a></li>
+								    	<li><a href="#">Month</a></li>
+								  	</ul>
+								</div>
+								<h4 class="innerAll margin-none pull-left text-white"><i class="fa fa-fw fa-money"></i> Earnings</h4>
+								<div class="clearfix"></div>
+							</div>
+							<div class="innerAll border-bottom">
+								<p class="margin-none"><span class="strong">Today: </span> &euro;502.42 <i class="fa text-primary fa-fw fa-arrow-up"></i><span class="strong text-primary">4%</span></p>
+							</div>
+							<div class="innerAll inner-2x bg-gray">
+								<div class="sparkline" sparkType="line" sparkResize="true" sparkHeight="76" sparkLineWidth="2" sparkWidth="100%" sparkLineColor="#eb6a5a" sparkSpotColor="#eb6a5a" sparkFillColor="" sparkHighlightLineColor="#7c7c7c" sparkHighlightSpotColor="#7c7c7c" sparkSpotRadius="4" sparkMinSpotColor="#b55151" sparkMaxSpotColor="#609450">
+									215,366,377,148,231,245,200,233,419,321								</div>
+							</div>
+						</div>
+						<div class="box-generic padding-none overflow-hidden">
+							<div class="heading-buttons innerR half border-bottom">
+								<div class="btn-group btn-group-sm pull-right">
+									<button data-toggle="dropdown" class="btn btn-default dropdown-toggle">Monthly <span class="caret"></span></button>
+									<ul class="dropdown-menu">
+										<li class="active"><a href="">Monthly</a></li>
+										<li><a href="">Quarterly</a></li>
+										<li><a href="">Yearly</a></li>
+									</ul>
+								</div>
+								<h4 class="innerAll margin-none pull-left">Monthly Spend</h4>
+								<div class="clearfix"></div>
+							</div>
+							<div class="innerAll inner-2x bg-gray border-bottom">
+								<p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, ipsam, minus nam consequatur aliquid sint.</p>
+							</div>
+							<div class="innerAll inner-2x">
+								<p class="text-large">&euro;3,204.89</p>
+								<div class="progress">
+								  	<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+								    	<span class="sr-only">40% from last month</span>
+								  	</div>
+								</div>
+								<div class="text-right">
+							  		<p class="strong margin-none">&euro;5,127.82</p>
+							  		<p><em>Previus month bill</em></p>
+							  	</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-separator-h"></div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+		</div>
+		</div>
+		</div>
+		<!-- // Content END -->
+		
+		<div class="clearfix"></div>
+		<!-- // Sidebar menu & content wrapper END -->
+		
+				<!-- Footer -->
+		<div id="footer" class="hidden-print">
+			
+			<!--  Copyright Line -->
+			<div class="copy">&copy; 2012 - 2014 - <a href="http://www.mosaicpro.biz">MosaicPro</a> - All Rights Reserved. <a href="http://themeforest.net/?ref=mosaicpro" target="_blank">Purchase CORAL on ThemeForest</a> - Current version: v1.9.6 / <a target="_blank" href="../assets/../../CHANGELOG.txt">changelog</a></div>
+			<!--  End Copyright Line -->
+	
+		</div>
+		<!-- // Footer END -->
+		
+				
+	</div>
+	<!-- // Main Container Fluid END -->
+	
+
+	<!-- Global -->
+	<script data-id="App.Config">
+	var basePath = '',
+		commonPath = '../assets/',
+		rootPath = '../',
+		DEV = false,
+		componentsPath = '../assets/components/',
+		layoutApp = false,
+		module = 'admin';
+	
+	var primaryColor = '#eb6a5a',
+		dangerColor = '#b55151',
+		successColor = '#609450',
+		infoColor = '#4a8bc2',
+		warningColor = '#ab7a4b',
+		inverseColor = '#45484d';
+	
+	var themerPrimaryColor = primaryColor;
+	</script>
+	
+		
+</body>
+</html>

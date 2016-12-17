@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>fr.k2i.adbeback.mtzik</groupId>
+        <artifactId>mtzik</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>fr.k2i.adbeback.mtzik.core</groupId>
+    <artifactId>core</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>CORE</name>
+
+
+    <modules>
+        <module>domain</module>
+        <module>repository</module>
+        <module>service</module>
+        <module>application-service</module>
+        <module>domain-web</module>
+        <module>repository-web</module>
+        <module>repository-bo</module>
+    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>fr.k2i.adbeback.mtzik.tools</groupId>
+            <artifactId>tools</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>

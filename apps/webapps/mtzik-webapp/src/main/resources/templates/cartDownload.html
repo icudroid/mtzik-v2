@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html
+       xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout/home_layout"
+      ng-app="adgameApp">
+<head>
+    <script type="text/javascript">
+        $(function(){
+            $("#download").click(function(){
+                window.location.href = addonf.base;
+            });
+        });
+    </script>
+
+
+    <style type="text/css">
+        .ui-front{
+            z-index: 1500;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div layout:fragment="searchBar">
+        <div th:substituteby="layout/fragment/searchBar(activeSearch=${'home'})"></div>
+    </div>
+
+
+    <div layout:fragment="content" id="content">
+
+        <div class="page-title">
+            <div class="container">
+                <h1 class="text-center" th:utext="#{addonf.download.title}">
+                    Bravo, Vous pouvez télécharger gratuitement votre musique
+                </h1>
+            </div>
+        </div>
+
+        <div class="container text-center">
+            <a id="download" target="_blank" th:href="@{'/dln/'+${filename}}" class="btn btn-primary strong" style="font-size: 26px;" th:inline="text"><i class="fa fa-download fa-4"></i>&nbsp;[[#{addonf.download}]]</a>
+        </div>
+    </div>
+
+</body>
+</html>

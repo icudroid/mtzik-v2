@@ -1,0 +1,37 @@
+
+
+    <!-- Cart table -->
+    <table class="table table-bordered table-primary table-striped table-vertical-center checkboxs js-table-sortable">
+        <thead>
+        <tr>
+            <th th:text="#{addonf.cart.table.header.item}">Item</th>
+            <th style="width: 50px;"></th>
+            <th style="width: 80px;" th:text="#{addonf.cart.table.header.price}">Price</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <!-- Cart item -->
+        <tr class="selectable" th:each="line : ${session.cart.lines}">
+            <td class="product">
+                <div class="media">
+                    <a th:href="@{/product.html(musicId=${line.idMedia})}" class="media-object pull-left hidden-xs">
+                        <img width="50" height="50" style="width: 50px; height: 50px;" class="thumb"  th:src="@{${session.staticUrl}+'jacket/'+${line.jacket}}" alt="" />
+                    </a>
+                    <div class="media-body" style="padding-top:16px;">
+                        <h5 class="text-uppercase"><a th:href="@{/product.html(musicId=${line.idMedia})}" class="text-primary" th:text="${line.title}">Product name goes here</a></h5>
+                    </div>
+                </div>
+            </td>
+            <td class="center">
+                <button class="btn btn-primary btn-circle removeFromCartTable"  th:attr="data-music=${line.idMedia}"><i class="fa fa-times"></i></button>
+            </td>
+            <td class="center">
+                <!--<span class="strong" th:text="#{addonf.price(${line.adNeeded})}">&euro;190.00</span>-->
+            </td>
+        </tr>
+        <!-- // Cart item END -->
+        </tbody>
+    </table>
+    <!-- // Cart table END -->
+
